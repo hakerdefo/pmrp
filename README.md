@@ -5,7 +5,7 @@ pmrp (Poor Man's Radio Player) is an Internet radio player script written in bas
 ### Features :
 
   - Over 250 hand-picked radio stations.
-  - Music, news, talkshows, interviews and much much more.
+  - Music, news, talk-shows, interviews and much much more.
   - Easy menu system to browse-navigate between different radio stations.
   - Now playing information.
   - Very low memory footprint.
