@@ -1,16 +1,11 @@
-#!/bin/bash
-
+#!/usr/bin/env bash
 RED='\e[41m'
 BLUE='\e[44m'
 NC='\e[0m'
-
-command -v mpg123 >/dev/null 2>&1 || { echo -e "$RED PMRP requires 'mpg123' but it's not installed! Install 'mpg123' to enjoy PMRP. $NC" >&2; exit 1; }
-
+command -v mpg123 >/dev/null 2>&1 || { printf "\033c"; echo -e "$RED PMRP requires 'mpg123' but it's not installed! Install 'mpg123' to enjoy PMRP. $NC" >&2; exit 1; }
 PLAYER="mpg123 --control --utf8 --title --preload 1 --buffer 768 --smooth"
-
-
 function Muzic (){
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC - Poor Man's Radio Player"
 echo ""
 echo -e "Station $BLUE Categories $NC :"
@@ -34,87 +29,68 @@ echo -e "$BLUE 16 $NC Urban"
 echo -e "$RED 17 $BLUE Quit PMRP $NC"
 echo ""
 echo -e "Select a $BLUE Category $NC and press $BLUE [Enter] $NC to $BLUE list available stations $NC :"
-
-read stations
+read -er stations
 case "$stations" in
-
 01 | 1)
 181fM
 ;;
-
 02 | 2)
 BlueS
 ;;
-
 03 | 3)
 BollywooD
 ;;
-
 04 | 4)
 ClassicaL
 ;;
-
 05 | 5)
 CountrY
 ;;
-
 06 | 6)
 ElectroniC
 ;;
-
 07 | 7)
 HitS
 ;;
-
 08 | 8)
 JazZ
 ;;
-
 09 | 9)
 ListeneR
 ;;
-
 10)
 MetaL
 ;;
-
 11)
 NewS
 ;;
-
 12)
 OldieS
 ;;
-
 13)
 ReggaE
 ;;
-
 14)
 RocK
 ;;
-
 15)
 SomA
 ;;
-
 16)
 UrbaN
 ;;
-
 17)
-clear
+printf "\033c"
 echo ""
 echo -e "$BLUE 'When I die, just keep playing the records' $RED Jimi Hendrix $NC"
 echo ""
-sleep 4
-clear
+sleep 3
+printf "\033c"
 break
 exit 0
 ;;
-
 *)
-clear
+printf "\033c"
 echo ""
 echo -e "$RED $stations $NC $BLUE is an invalid selection! $NC"
 echo ""
@@ -127,30 +103,21 @@ echo ""
 read -rsp $'Press any key to return to PMRP Main Menu...\n' -n1 key
 Muzic
 ;;
-
 esac
 }
-
-
 function 181fM (){
-
-
 function UrbaN_181fM (){
-
 Name01="Jammin 181"
 Name02="Old School HipHop"
 Name03="The Beat"
 Name04="The Box"
 Name05="True R&B"
-
 link01="http://relay.181.fm:8042"
 link02="http://relay.181.fm:8068"
 link03="http://relay.181.fm:8054"
 link04="http://relay.181.fm:8024"
 link05="http://relay.181.fm:8022"
-
-clear
-
+printf "\033c"
 echo -e "Stations Playing $BLUE Urban Music $NC :"
 echo ""
 echo -e "$BLUE 01 $NC $Name01"
@@ -161,12 +128,10 @@ echo -e "$BLUE 05 $NC $Name05"
 echo -e "$RED 06 $BLUE Return to 181FM Menu $NC"
 echo ""
 echo -e "Select a $BLUE station $NC between 1 to 5 and hit $BLUE [Enter] $NC to $BLUE PLAY $NC :"
-
-read PLAY
+read -er PLAY
 case "$PLAY" in
-
 01 | 1)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE 181FM $NC -> $BLUE Urban $NC -> $BLUE $Name01 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -177,9 +142,8 @@ echo ""
 $PLAYER "$link01" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 UrbaN_181fM
 ;;
-
 02 | 2)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE 181FM $NC -> $BLUE Urban $NC -> $BLUE $Name02 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -190,9 +154,8 @@ echo ""
 $PLAYER "$link02" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 UrbaN_181fM
 ;;
-
 03 | 3)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE 181FM $NC -> $BLUE Urban $NC -> $BLUE $Name03 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -203,9 +166,8 @@ echo ""
 $PLAYER "$link03" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 UrbaN_181fM
 ;;
-
 04 | 4)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE 181FM $NC -> $BLUE Urban $NC -> $BLUE $Name04 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -216,9 +178,8 @@ echo ""
 $PLAYER "$link04" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 UrbaN_181fM
 ;;
-
 05 | 5)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE 181FM $NC -> $BLUE Urban $NC -> $BLUE $Name05 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -229,43 +190,34 @@ echo ""
 $PLAYER "$link05" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 UrbaN_181fM
 ;;
-
 06 | 6)
-clear
+printf "\033c"
 181fM
 ;;
-
 *)
-clear
+printf "\033c"
 echo ""
 echo -e "$RED $PLAY $NC $BLUE is an invalid selection! $NC"
 echo ""
 sleep 3
 UrbaN_181fM
 ;;
-
 esac
 }
-
-
 function TechnO_181fM (){
-
 Name01="Chilled Out"
 Name02="Energy 93"
 Name03="Energy 98"
 Name04="Studio 181"
 Name05="Techno Club"
 Name06="The Vibe of Vegas"
-
 link01="http://relay.181.fm:8700"
 link02="http://relay.181.fm:8044"
 link03="http://relay.181.fm:8800"
 link04="http://relay.181.fm:8072"
 link05="http://icyrelay.181.fm/181-technoclub_128k.mp3"
 link06="http://relay.181.fm:8074"
-
-clear
-
+printf "\033c"
 echo -e "Stations Playing $BLUE Techno Music $NC :"
 echo ""
 echo -e "$BLUE 01 $NC $Name01"
@@ -277,12 +229,10 @@ echo -e "$BLUE 06 $NC $Name06"
 echo -e "$RED 07 $BLUE Return to 181FM Menu $NC"
 echo ""
 echo -e "Select a $BLUE station $NC between 1 to 6 and hit $BLUE [Enter] $NC to $BLUE PLAY $NC :"
-
-read PLAY
+read -er PLAY
 case "$PLAY" in
-
 01 | 1)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE 181FM $NC -> $BLUE Techno $NC -> $BLUE $Name01 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -293,9 +243,8 @@ echo ""
 $PLAYER "$link01" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 TechnO_181fM
 ;;
-
 02 | 2)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE 181FM $NC -> $BLUE Techno $NC -> $BLUE $Name02 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -306,9 +255,8 @@ echo ""
 $PLAYER "$link02" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 TechnO_181fM
 ;;
-
 03 | 3)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE 181FM $NC -> $BLUE Techno $NC -> $BLUE $Name03 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -319,9 +267,8 @@ echo ""
 $PLAYER "$link03" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 TechnO_181fM
 ;;
-
 04 | 4)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE 181FM $NC -> $BLUE Techno $NC -> $BLUE $Name04 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -332,9 +279,8 @@ echo ""
 $PLAYER "$link04" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 TechnO_181fM
 ;;
-
 05 | 5)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE 181FM $NC -> $BLUE Techno $NC -> $BLUE $Name05 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -345,9 +291,8 @@ echo ""
 $PLAYER "$link05" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 TechnO_181fM
 ;;
-
 06 | 6)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE 181FM $NC -> $BLUE Techno $NC -> $BLUE $Name06 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -358,27 +303,21 @@ echo ""
 $PLAYER "$link06" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 TechnO_181fM
 ;;
-
 07 | 7)
-clear
+printf "\033c"
 181fM
 ;;
-
 *)
-clear
+printf "\033c"
 echo ""
 echo -e "$RED $PLAY $NC $BLUE is an invalid selection! $NC"
 echo ""
 sleep 3
 TechnO_181fM
 ;;
-
 esac
 }
-
-
 function RocK_181fM (){
-
 Name01="80's Hairband"
 Name02="Chloe"
 Name03="Classic Buzz"
@@ -387,7 +326,6 @@ Name05="Rock 40"
 Name06="The Buzz"
 Name07="The Eagle"
 Name08="The Rock"
-
 link01="http://relay.181.fm:8014"
 link02="http://relay.181.fm:8100"
 link03="http://relay.181.fm:8038"
@@ -396,9 +334,7 @@ link05="http://relay.181.fm:8028"
 link06="http://relay.181.fm:8126"
 link07="http://relay.181.fm:8030"
 link08="http://relay.181.fm:8064"
-
-clear
-
+printf "\033c"
 echo -e "Stations Playing $BLUE Rock Music $NC :"
 echo ""
 echo -e "$BLUE 01 $NC $Name01"
@@ -412,12 +348,10 @@ echo -e "$BLUE 08 $NC $Name08"
 echo -e "$RED 09 $BLUE Return to 181FM Menu $NC"
 echo ""
 echo -e "Select a $BLUE station $NC between 1 to 8 and hit $BLUE [Enter] $NC to $BLUE PLAY $NC :"
-
-read PLAY
+read -er PLAY
 case "$PLAY" in
-
 01 | 1)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE 181FM $NC -> $BLUE Rock $NC -> $BLUE $Name01 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -428,9 +362,8 @@ echo ""
 $PLAYER "$link01" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 RocK_181fM
 ;;
-
 02 | 2)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE 181FM $NC -> $BLUE Rock $NC -> $BLUE $Name02 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -441,9 +374,8 @@ echo ""
 $PLAYER "$link02" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 RocK_181fM
 ;;
-
 03 | 3)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE 181FM $NC -> $BLUE Rock $NC -> $BLUE $Name03 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -454,9 +386,8 @@ echo ""
 $PLAYER "$link03" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 RocK_181fM
 ;;
-
 04 | 4)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE 181FM $NC -> $BLUE Rock $NC -> $BLUE $Name04 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -467,9 +398,8 @@ echo ""
 $PLAYER "$link04" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 RocK_181fM
 ;;
-
 05 | 5)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE 181FM $NC -> $BLUE Rock $NC -> $BLUE $Name05 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -480,9 +410,8 @@ echo ""
 $PLAYER "$link05" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 RocK_181fM
 ;;
-
 06 | 6)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE 181FM $NC -> $BLUE Rock $NC -> $BLUE $Name06 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -493,9 +422,8 @@ echo ""
 $PLAYER "$link06" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 RocK_181fM
 ;;
-
 07 | 7)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE 181FM $NC -> $BLUE Rock $NC -> $BLUE $Name07 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -506,9 +434,8 @@ echo ""
 $PLAYER "$link07" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 RocK_181fM
 ;;
-
 08 | 8)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE 181FM $NC -> $BLUE Rock $NC -> $BLUE $Name08 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -519,27 +446,21 @@ echo ""
 $PLAYER "$link08" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 RocK_181fM
 ;;
-
 09 | 9)
-clear
+printf "\033c"
 181fM
 ;;
-
 *)
-clear
+printf "\033c"
 echo ""
 echo -e "$RED $PLAY $NC $BLUE is an invalid selection! $NC"
 echo ""
 sleep 3
 RocK_181fM
 ;;
-
 esac
 }
-
-
 function PoP_181fM (){
-
 Name01="Party 181"
 Name02="Power 181"
 Name03="Smooth AC"
@@ -548,7 +469,6 @@ Name05="The Mix"
 Name06="The Office"
 Name07="The Point"
 Name08="UK Top 40"
-
 link01="http://relay.181.fm:8036"
 link02="http://relay.181.fm:8128"
 link03="http://relay.181.fm:8094"
@@ -557,9 +477,7 @@ link05="http://relay.181.fm:8032"
 link06="http://relay.181.fm:8002"
 link07="http://relay.181.fm:8010"
 link08="http://relay.181.fm:8070"
-
-clear
-
+printf "\033c"
 echo -e "Stations Playing $BLUE Pop Music $NC :"
 echo ""
 echo -e "$BLUE 01 $NC $Name01"
@@ -573,12 +491,10 @@ echo -e "$BLUE 08 $NC $Name08"
 echo -e "$RED 09 $BLUE Return to 181FM Menu $NC"
 echo ""
 echo -e "Select a $BLUE station $NC between 1 to 8 and hit $BLUE [Enter] $NC to $BLUE PLAY $NC :"
-
-read PLAY
+read -er PLAY
 case "$PLAY" in
-
 01 | 1)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE 181FM $NC -> $BLUE Pop $NC -> $BLUE $Name01 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -589,9 +505,8 @@ echo ""
 $PLAYER "$link01" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 PoP_181fM
 ;;
-
 02 | 2)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE 181FM $NC -> $BLUE Pop $NC -> $BLUE $Name02 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -602,9 +517,8 @@ echo ""
 $PLAYER "$link02" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 PoP_181fM
 ;;
-
 03 | 3)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE 181FM $NC -> $BLUE Pop $NC -> $BLUE $Name03 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -615,9 +529,8 @@ echo ""
 $PLAYER "$link03" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 PoP_181fM
 ;;
-
 04 | 4)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE 181FM $NC -> $BLUE Pop $NC -> $BLUE $Name04 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -628,9 +541,8 @@ echo ""
 $PLAYER "$link04" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 PoP_181fM
 ;;
-
 05 | 5)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE 181FM $NC -> $BLUE Pop $NC -> $BLUE $Name05 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -641,9 +553,8 @@ echo ""
 $PLAYER "$link05" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 PoP_181fM
 ;;
-
 06 | 6)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE 181FM $NC -> $BLUE Pop $NC -> $BLUE $Name06 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -654,9 +565,8 @@ echo ""
 $PLAYER "$link06" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 PoP_181fM
 ;;
-
 07 | 7)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE 181FM $NC -> $BLUE Pop $NC -> $BLUE $Name07 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -667,9 +577,8 @@ echo ""
 $PLAYER "$link07" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 PoP_181fM
 ;;
-
 08 | 8)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE 181FM $NC -> $BLUE Pop $NC -> $BLUE $Name08 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -680,43 +589,34 @@ echo ""
 $PLAYER "$link08" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 PoP_181fM
 ;;
-
 09 | 9)
-clear
+printf "\033c"
 181fM
 ;;
-
 *)
-clear
+printf "\033c"
 echo ""
 echo -e "$RED $PLAY $NC $BLUE is an invalid selection! $NC"
 echo ""
 sleep 3
 PoP_181fM
 ;;
-
 esac
 }
-
-
 function OldieS_181fM (){
-
 Name01="Beatles"
 Name02="Classic Hits"
 Name03="Good Time Oldies"
 Name04="Mellow Gold"
 Name05="Soul"
 Name06="Super 70s"
-
 link01="http://relay.181.fm:8062"
 link02="http://relay.181.fm:8132"
 link03="http://relay.181.fm:8046"
 link04="http://relay.181.fm:8060"
 link05="http://relay.181.fm:8058"
 link06="http://relay.181.fm:8066"
-
-clear
-
+printf "\033c"
 echo -e "Stations Playing $BLUE Oldies Music $NC :"
 echo ""
 echo -e "$BLUE 01 $NC $Name01"
@@ -728,12 +628,10 @@ echo -e "$BLUE 06 $NC $Name06"
 echo -e "$RED 07 $BLUE Return to 181FM Menu $NC"
 echo ""
 echo -e "Select a $BLUE station $NC between 1 to 6 and hit $BLUE [Enter] $NC to $BLUE PLAY $NC :"
-
-read PLAY
+read -er PLAY
 case "$PLAY" in
-
 01 | 1)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE 181FM $NC -> $BLUE Oldies $NC -> $BLUE $Name01 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -744,9 +642,8 @@ echo ""
 $PLAYER "$link01" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 OldieS_181fM
 ;;
-
 02 | 2)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE 181FM $NC -> $BLUE Oldies $NC -> $BLUE $Name02 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -757,9 +654,8 @@ echo ""
 $PLAYER "$link02" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 OldieS_181fM
 ;;
-
 03 | 3)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE 181FM $NC -> $BLUE Oldies $NC -> $BLUE $Name03 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -770,9 +666,8 @@ echo ""
 $PLAYER "$link03" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 OldieS_181fM
 ;;
-
 04 | 4)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE 181FM $NC -> $BLUE Oldies $NC -> $BLUE $Name04 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -783,9 +678,8 @@ echo ""
 $PLAYER "$link04" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 OldieS_181fM
 ;;
-
 05 | 5)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE 181FM $NC -> $BLUE Oldies $NC -> $BLUE $Name05 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -796,9 +690,8 @@ echo ""
 $PLAYER "$link05" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 OldieS_181fM
 ;;
-
 06 | 6)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE 181FM $NC -> $BLUE Oldies $NC -> $BLUE $Name06 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -809,35 +702,26 @@ echo ""
 $PLAYER "$link06" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 OldieS_181fM
 ;;
-
 07 | 7)
-clear
+printf "\033c"
 181fM
 ;;
-
 *)
-clear
+printf "\033c"
 echo ""
 echo -e "$RED $PLAY $NC $BLUE is an invalid selection! $NC"
 echo ""
 sleep 3
 OldieS_181fM
 ;;
-
 esac
 }
-
-
 function LatiN_181fM (){
-
 Name01="Reggae Roots"
 Name02="Salsa"
-
 link01="http://relay.181.fm:8096"
 link02="http://relay.181.fm:8098"
-
-clear
-
+printf "\033c"
 echo -e "1 Stations Playing $BLUE Latin Music $NC :"
 echo ""
 echo -e "$BLUE 01 $NC $Name01"
@@ -845,12 +729,10 @@ echo -e "$BLUE 02 $NC $Name02"
 echo -e "$RED 03 $BLUE Return to 181FM Menu $NC"
 echo ""
 echo -e "Select a $BLUE station $NC between 1 to 2 and hit $BLUE [Enter] $NC to $BLUE PLAY $NC :"
-
-read PLAY
+read -er PLAY
 case "$PLAY" in
-
 01 | 1)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE 181FM $NC -> $BLUE Latin $NC -> $BLUE $Name01 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -861,9 +743,8 @@ echo ""
 $PLAYER "$link01" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 LatiN_181fM
 ;;
-
 02 | 2)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE 181FM $NC -> $BLUE Latin $NC -> $BLUE $Name02 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -874,27 +755,21 @@ echo ""
 $PLAYER "$link02" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 LatiN_181fM
 ;;
-
 03 | 3)
-clear
+printf "\033c"
 181fM
 ;;
-
 *)
-clear
+printf "\033c"
 echo ""
 echo -e "$RED $PLAY $NC $BLUE is an invalid selection! $NC"
 echo ""
 sleep 3
 LatiN_181fM
 ;;
-
 esac
 }
-
-
 function EasY_181fM (){
-
 Name01="Acid Jazz"
 Name02="Bebop"
 Name03="Classical Guitar"
@@ -906,7 +781,6 @@ Name08="The Breeze"
 Name09="Trance Jazz"
 Name10="True Blues"
 Name11="Vocal Jazz"
-
 link01="http://icyrelay.181.fm/181-acidjazz_128k.mp3"
 link02="http://icyrelay.181.fm/181-bebop_128k.mp3"
 link03="http://icyrelay.181.fm/181-classicalguitar_128k.mp3"
@@ -918,9 +792,7 @@ link08="http://relay.181.fm:8004"
 link09="http://icyrelay.181.fm/181-trancejazz_128k.mp3"
 link10="http://icyrelay.181.fm/181-blues_128k.mp3"
 link11="http://icyrelay.181.fm/181-vocals_128k.mp3"
-
-clear
-
+printf "\033c"
 echo -e "Stations Playing $BLUE Easy Listening Music $NC :"
 echo ""
 echo -e "$BLUE 01 $NC $Name01"
@@ -937,12 +809,10 @@ echo -e "$BLUE 11 $NC $Name11"
 echo -e "$RED 12 $BLUE Return to 181FM Menu $NC"
 echo ""
 echo -e "Select a $BLUE station $NC between 1 to 11 and hit $BLUE [Enter] $NC to $BLUE PLAY $NC :"
-
-read PLAY
+read -er PLAY
 case "$PLAY" in
-
 01 | 1)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE 181FM $NC -> $BLUE Easy Listening $NC -> $BLUE $Name01 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -953,9 +823,8 @@ echo ""
 $PLAYER "$link01" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 EasY_181fM
 ;;
-
 02 | 2)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE 181FM $NC -> $BLUE Easy Listening $NC -> $BLUE $Name02 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -966,9 +835,8 @@ echo ""
 $PLAYER "$link02" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 EasY_181fM
 ;;
-
 03 | 3)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE 181FM $NC -> $BLUE Easy Listening $NC -> $BLUE $Name03 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -979,9 +847,8 @@ echo ""
 $PLAYER "$link03" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 EasY_181fM
 ;;
-
 04 | 4)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE 181FM $NC -> $BLUE Easy Listening $NC -> $BLUE $Name04 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -992,9 +859,8 @@ echo ""
 $PLAYER "$link04" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 EasY_181fM
 ;;
-
 05 | 5)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE 181FM $NC -> $BLUE Easy Listening $NC -> $BLUE $Name05 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -1005,9 +871,8 @@ echo ""
 $PLAYER "$link05" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 EasY_181fM
 ;;
-
 06 | 6)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE 181FM $NC -> $BLUE Easy Listening $NC -> $BLUE $Name06 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -1018,9 +883,8 @@ echo ""
 $PLAYER "$link06" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 EasY_181fM
 ;;
-
 07 | 7)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE 181FM $NC -> $BLUE Easy Listening $NC -> $BLUE $Name07 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -1031,9 +895,8 @@ echo ""
 $PLAYER "$link07" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 EasY_181fM
 ;;
-
 08 | 8)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE 181FM $NC -> $BLUE Easy Listening $NC -> $BLUE $Name08 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -1044,9 +907,8 @@ echo ""
 $PLAYER "$link08" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 EasY_181fM
 ;;
-
 09 | 9)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE 181FM $NC -> $BLUE Easy Listening $NC -> $BLUE $Name09 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -1057,9 +919,8 @@ echo ""
 $PLAYER "$link09" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 EasY_181fM
 ;;
-
 10)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE 181FM $NC -> $BLUE Easy Listening $NC -> $BLUE $Name10 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -1070,9 +931,8 @@ echo ""
 $PLAYER "$link10" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 EasY_181fM
 ;;
-
 11)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE 181FM $NC -> $BLUE Easy Listening $NC -> $BLUE $Name11 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -1083,41 +943,32 @@ echo ""
 $PLAYER "$link11" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 EasY_181fM
 ;;
-
 12)
-clear
+printf "\033c"
 181fM
 ;;
-
 *)
-clear
+printf "\033c"
 echo ""
 echo -e "$RED $PLAY $NC $BLUE is an invalid selection! $NC"
 echo ""
 sleep 3
 EasY_181fM
 ;;
-
 esac
 }
-
-
 function CountrY_181fM (){
-
 Name01="Front Porch"
 Name02="Highway 181"
 Name03="Kickin' Country"
 Name04="Real Country"
 Name05="US 181"
-
 link01="http://relay.181.fm:8016"
 link02="http://relay.181.fm:8018"
 link03="http://relay.181.fm:8130"
 link04="http://relay.181.fm:8034"
 link05="http://relay.181.fm:8056"
-
-clear
-
+printf "\033c"
 echo -e "Stations Playing $BLUE Country Music $NC :"
 echo ""
 echo -e "$BLUE 01 $NC $Name01"
@@ -1128,12 +979,10 @@ echo -e "$BLUE 05 $NC $Name05"
 echo -e "$RED 06 $BLUE Return to 181FM Menu $NC"
 echo ""
 echo -e "Select a $BLUE station $NC between 1 to 5 and hit $BLUE [Enter] $NC to $BLUE PLAY $NC :"
-
-read PLAY
+read -er PLAY
 case "$PLAY" in
-
 01 | 1)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE 181FM $NC -> $BLUE Country $NC -> $BLUE $Name01 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -1144,9 +993,8 @@ echo ""
 $PLAYER "$link01" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 CountrY_181fM
 ;;
-
 02 | 2)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE 181FM $NC -> $BLUE Country $NC -> $BLUE $Name02 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -1157,9 +1005,8 @@ echo ""
 $PLAYER "$link02" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 CountrY_181fM
 ;;
-
 03 | 3)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE 181FM $NC -> $BLUE Country $NC -> $BLUE $Name03 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -1170,9 +1017,8 @@ echo ""
 $PLAYER "$link03" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 CountrY_181fM
 ;;
-
 04 | 4)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE 181FM $NC -> $BLUE Country $NC -> $BLUE $Name04 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -1183,9 +1029,8 @@ echo ""
 $PLAYER "$link04" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 CountrY_181fM
 ;;
-
 05 | 5)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE 181FM $NC -> $BLUE Country $NC -> $BLUE $Name05 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -1196,45 +1041,34 @@ echo ""
 $PLAYER "$link05" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 CountrY_181fM
 ;;
-
 06 | 6)
-clear
+printf "\033c"
 181fM
 ;;
-
 *)
-clear
+printf "\033c"
 echo ""
 echo -e "$RED $PLAY $NC $BLUE is an invalid selection! $NC"
 echo ""
 sleep 3
 CountrY_181fM
 ;;
-
 esac
 }
-
-
 function ComedY_181fM (){
-
 Name01="Comedy Club"
-
 link01="http://relay.181.fm:8026"
-
-clear
-
+printf "\033c"
 echo -e "1 Station Playing $BLUE Non-stop Comedy Shows $NC :"
 echo ""
 echo -e "$BLUE 01 $NC $Name01"
 echo -e "$RED 02 $BLUE Return to 181FM Menu $NC"
 echo ""
 echo -e "Select $BLUE station $NC 1 and hit $BLUE [Enter] $NC to $BLUE PLAY $NC :"
-
-read PLAY
+read -er PLAY
 case "$PLAY" in
-
 01 | 1)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE 181FM $NC -> $BLUE Comedy $NC -> $BLUE $Name01 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -1245,41 +1079,32 @@ echo ""
 $PLAYER "$link01" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 ComedY_181fM
 ;;
-
 02 | 2)
-clear
+printf "\033c"
 181fM
 ;;
-
 *)
-clear
+printf "\033c"
 echo ""
 echo -e "$RED $PLAY $NC $BLUE is an invalid selection! $NC"
 echo ""
 sleep 3
 ComedY_181fM
 ;;
-
 esac
 }
-
-
 function NinetY_181fM (){
-
 Name01="90's Alternative"
 Name02="90's Country"
 Name03="90's Dance"
 Name04="Lite 90's"
 Name05="Star 90's"
-
 link01="http://relay.181.fm:8052"
 link02="http://relay.181.fm:8050"
 link03="http://relay.181.fm:8140"
 link04="http://relay.181.fm:8048"
 link05="http://relay.181.fm:8012"
-
-clear
-
+printf "\033c"
 echo -e "Stations Playing $BLUE 90s Music $NC :"
 echo ""
 echo -e "$BLUE 01 $NC $Name01"
@@ -1290,12 +1115,10 @@ echo -e "$BLUE 05 $NC $Name05"
 echo -e "$RED 06 $BLUE Return to 181FM Menu $NC"
 echo ""
 echo -e "Select a $BLUE station $NC between 1 to 5 and hit $BLUE [Enter] $NC to $BLUE PLAY $NC :"
-
-read PLAY
+read -er PLAY
 case "$PLAY" in
-
 01 | 1)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE 181FM $NC -> $BLUE 90s $NC -> $BLUE $Name01 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -1306,9 +1129,8 @@ echo ""
 $PLAYER "$link01" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 NinetY_181fM
 ;;
-
 02 | 2)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE 181FM $NC -> $BLUE 90s $NC -> $BLUE $Name02 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -1319,9 +1141,8 @@ echo ""
 $PLAYER "$link02" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 NinetY_181fM
 ;;
-
 03 | 3)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE 181FM $NC -> $BLUE 90s $NC -> $BLUE $Name03 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -1332,9 +1153,8 @@ echo ""
 $PLAYER "$link03" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 NinetY_181fM
 ;;
-
 04 | 4)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE 181FM $NC -> $BLUE 90s $NC -> $BLUE $Name04 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -1345,9 +1165,8 @@ echo ""
 $PLAYER "$link04" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 NinetY_181fM
 ;;
-
 05 | 5)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE 181FM $NC -> $BLUE 90s $NC -> $BLUE $Name05 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -1358,37 +1177,28 @@ echo ""
 $PLAYER "$link05" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 NinetY_181fM
 ;;
-
 06 | 6)
-clear
+printf "\033c"
 181fM
 ;;
-
 *)
-clear
+printf "\033c"
 echo ""
 echo -e "$RED $PLAY $NC $BLUE is an invalid selection! $NC"
 echo ""
 sleep 3
 NinetY_181fM
 ;;
-
 esac
 }
-
-
 function EightY_181fM (){
-
 Name01="80's Country"
 Name02="Awesome 80's"
 Name03="Lite 80's"
-
 link01="http://relay.181.fm:8134"
 link02="http://relay.181.fm:8000"
 link03="http://relay.181.fm:8040"
-
-clear
-
+printf "\033c"
 echo -e "Stations Playing $BLUE 80s Music $NC :"
 echo ""
 echo -e "$BLUE 01 $NC $Name01"
@@ -1397,12 +1207,10 @@ echo -e "$BLUE 03 $NC $Name03"
 echo -e "$RED 04 $BLUE Return to 181FM Menu $NC"
 echo ""
 echo -e "Select a $BLUE station $NC between 1 to 3 and hit $BLUE [Enter] $NC to $BLUE PLAY $NC :"
-
-read PLAY
+read -er PLAY
 case "$PLAY" in
-
 01 | 1)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE 181FM $NC -> $BLUE 80s $NC -> $BLUE $Name01 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -1413,9 +1221,8 @@ echo ""
 $PLAYER "$link01" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 EightY_181fM
 ;;
-
 02 | 2)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE 181FM $NC -> $BLUE 80s $NC -> $BLUE $Name02 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -1426,9 +1233,8 @@ echo ""
 $PLAYER "$link02" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 EightY_181fM
 ;;
-
 03 | 3)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE 181FM $NC -> $BLUE 80s $NC -> $BLUE $Name03 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -1439,27 +1245,21 @@ echo ""
 $PLAYER "$link03" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 EightY_181fM
 ;;
-
 04 | 4)
-clear
+printf "\033c"
 181fM
 ;;
-
 *)
-clear
+printf "\033c"
 echo ""
 echo -e "$RED $PLAY $NC $BLUE is an invalid selection! $NC"
 echo ""
 sleep 3
 EightY_181fM
 ;;
-
 esac
 }
-
-
-clear
-
+printf "\033c"
 echo ""
 echo -e "181.FM Station $BLUE Categories $NC :"
 echo ""
@@ -1477,74 +1277,56 @@ echo -e "$BLUE 11 $NC Urban"
 echo -e "$RED 12 $BLUE Return to Main Menu $NC"
 echo ""
 echo -e "Select a $BLUE Category $NC and press $BLUE [Enter] $NC to $BLUE list available stations $NC :"
-
-read stations
+read -er stations
 case "$stations" in
-
 01 | 1)
 EightY_181fM
 ;;
-
 02 | 2)
 NinetY_181fM
 ;;
-
 03 | 3)
 ComedY_181fM
 ;;
-
 04 | 4)
 CountrY_181fM
 ;;
-
 05 | 5)
 EasY_181fM
 ;;
-
 06 | 6)
 LatiN_181fM
 ;;
-
 07 | 7)
 OldieS_181fM
 ;;
-
 08 | 8)
 PoP_181fM
 ;;
-
 09 | 9)
 RocK_181fM
 ;;
-
 10)
 TechnO_181fM
 ;;
-
 11)
 UrbaN_181fM
 ;;
-
 12)
-clear
+printf "\033c"
 Muzic
 ;;
-
 *)
-clear
+printf "\033c"
 echo ""
 echo -e "$RED $stations $NC $BLUE is an invalid selection! $NC"
 echo ""
 sleep 3
 181fM
 ;;
-
 esac
 }
-
-
 function BlueS (){
-
 Name01="12 Bar"
 Name02="A Better Classic Blues Vintage Station"
 Name03="A Blues Dream"
@@ -1561,7 +1343,6 @@ Name13="Crossroads Blues Radio"
 Name14="Houston Blues Radio"
 Name15="K-BLUES"
 Name16="Radio Mississipi Blues"
-
 link01="http://listen.radionomy.com:80/12Bar"
 link02="http://streaming.radionomy.com/A-Better-Classic-Blues-Vintage-Station"
 link03="http://streaming.radionomy.com/ABLUESDREAM-Classic-NewBlues24H"
@@ -1578,9 +1359,7 @@ link13="http://174.127.114.128:8134/stream"
 link14="http://74.208.170.137:8640/stream"
 link15="http://listen.radionomy.com:80/K-BLUES"
 link16="http://listen.radionomy.com:80/RadioMississipi-Blues"
-
-clear
-
+printf "\033c"
 echo -e "Stations Playing $BLUE Blues Music $NC :"
 echo ""
 echo -e "$BLUE 01 $NC $Name01"
@@ -1602,12 +1381,10 @@ echo -e "$BLUE 16 $NC $Name16"
 echo -e "$RED 17 $BLUE Return to Main Menu $NC"
 echo ""
 echo -e "Select a $BLUE station $NC between 1 to 16 and hit $BLUE [Enter] $NC to $BLUE PLAY $NC :"
-
-read PLAY
+read -er PLAY
 case "$PLAY" in
-
 01 | 1)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Blues $NC -> $BLUE $Name01 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -1618,9 +1395,8 @@ echo ""
 $PLAYER "$link01" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 BlueS
 ;;
-
 02 | 2)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Blues $NC -> $BLUE $Name02 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -1631,9 +1407,8 @@ echo ""
 $PLAYER "$link02" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 BlueS
 ;;
-
 03 | 3)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Blues $NC -> $BLUE $Name03 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -1644,9 +1419,8 @@ echo ""
 $PLAYER "$link03" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 BlueS
 ;;
-
 04 | 4)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Blues $NC -> $BLUE $Name04 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -1657,9 +1431,8 @@ echo ""
 $PLAYER "$link04" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 BlueS
 ;;
-
 05 | 5)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Blues $NC -> $BLUE $Name05 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -1670,9 +1443,8 @@ echo ""
 $PLAYER "$link05" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 BlueS
 ;;
-
 06 | 6)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Blues $NC -> $BLUE $Name06 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -1683,9 +1455,8 @@ echo ""
 $PLAYER "$link06" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 BlueS
 ;;
-
 07 | 7)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Blues $NC -> $BLUE $Name07 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -1696,9 +1467,8 @@ echo ""
 $PLAYER "$link07" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 BlueS
 ;;
-
 08 | 8)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Blues $NC -> $BLUE $Name08 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -1709,9 +1479,8 @@ echo ""
 $PLAYER "$link08" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 BlueS
 ;;
-
 09 | 9)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Blues $NC -> $BLUE $Name09 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -1722,9 +1491,8 @@ echo ""
 $PLAYER "$link09" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 BlueS
 ;;
-
 10)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Blues $NC -> $BLUE $Name10 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -1735,9 +1503,8 @@ echo ""
 $PLAYER "$link10" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 BlueS
 ;;
-
 11)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Blues $NC -> $BLUE $Name11 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -1748,9 +1515,8 @@ echo ""
 $PLAYER "$link11" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 BlueS
 ;;
-
 12)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Blues $NC -> $BLUE $Name12 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -1761,9 +1527,8 @@ echo ""
 $PLAYER "$link12" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 BlueS
 ;;
-
 13)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Blues $NC -> $BLUE $Name13 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -1774,9 +1539,8 @@ echo ""
 $PLAYER "$link13" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 BlueS
 ;;
-
 14)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Blues $NC -> $BLUE $Name14 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -1787,9 +1551,8 @@ echo ""
 $PLAYER "$link14" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 BlueS
 ;;
-
 15)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Blues $NC -> $BLUE $Name15 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -1800,9 +1563,8 @@ echo ""
 $PLAYER "$link15" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 BlueS
 ;;
-
 16)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Blues $NC -> $BLUE $Name16 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -1813,27 +1575,21 @@ echo ""
 $PLAYER "$link16" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 BlueS
 ;;
-
 17)
-clear
+printf "\033c"
 Muzic
 ;;
-
 *)
-clear
+printf "\033c"
 echo ""
 echo -e "$RED $PLAY $NC $BLUE is an invalid selection! $NC"
 echo ""
 sleep 3
 BlueS
 ;;
-
 esac
 }
-
-
 function BollywooD (){
-
 Name01="bollywood radio & beyond"
 Name02="Bombay Beats India Radio"
 Name03="Desi Music Mix"
@@ -1841,7 +1597,7 @@ Name04="Hungama-Bollywood-Hits"
 Name05="Hungama-Bollywood-Retro"
 Name06="Indo-Caribbean Radio"
 Name07="Radio Afsana"
-Name08="Radio Dhinchak"
+Name08="Radio Curry"
 Name09="Sur Station"
 Name10="Taal FM Radio"
 Name11="Hindi Desi Bollywood"
@@ -1850,7 +1606,6 @@ Name13="Radio Gabbar"
 Name14="Radio HSL"
 Name15="Radio Teen Taal"
 Name16="The Voice Asia"
-
 link01="http://96.31.83.86:8084"
 link02="http://205.164.62.15:8017"
 link03="http://desimusicmix.com:8000/HQ"
@@ -1858,7 +1613,7 @@ link04="http://123.176.41.8:8056"
 link05="http://123.176.41.8:8132"
 link06="http://208.43.9.96:8652"
 link07="http://174.36.206.197:8198"
-link08="http://167.114.131.90:5404/stream"
+link08="http://108.178.13.122:8010"
 link09="http://streaming208.radionomy.com:80/SurStation-HindiMelodiousSongs"
 link10="http://streaming207.radionomy.com:80/TaalFMRadio"
 link11="http://50.7.77.114:8296"
@@ -1867,9 +1622,7 @@ link13="http://viadj.viastreaming.net:7090"
 link14="http://50.7.70.66:8485"
 link15="http://195.154.176.33:8000"
 link16="http://uk2.internet-radio.com:8043/live"
-
-clear
-
+printf "\033c"
 echo -e "Stations Playing $BLUE Bollywood Music $NC :"
 echo ""
 echo -e "$BLUE 01 $NC $Name01"
@@ -1891,11 +1644,10 @@ echo -e "$BLUE 16 $NC $Name16"
 echo -e "$RED 17 $BLUE Return to Main Menu $NC"
 echo ""
 echo -e "Select a $BLUE station $NC between 1 to 16 and hit $BLUE [Enter] $NC to $BLUE PLAY $NC :"
-read PLAY
+read -er PLAY
 case "$PLAY" in
-
 01 | 1)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Bollywood $NC -> $BLUE $Name01 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -1906,9 +1658,8 @@ echo ""
 $PLAYER "$link01" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 BollywooD
 ;;
-
 02 | 2)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Bollywood $NC -> $BLUE $Name02 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -1919,9 +1670,8 @@ echo ""
 $PLAYER "$link02" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 BollywooD
 ;;
-
 03 | 3)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Bollywood $NC -> $BLUE $Name03 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -1932,9 +1682,8 @@ echo ""
 $PLAYER "$link03" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 BollywooD
 ;;
-
 04 | 4)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Bollywood $NC -> $BLUE $Name04 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -1945,9 +1694,8 @@ echo ""
 $PLAYER "$link04" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 BollywooD
 ;;
-
 05 | 5)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Bollywood $NC -> $BLUE $Name05 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -1958,9 +1706,8 @@ echo ""
 $PLAYER "$link05" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 BollywooD
 ;;
-
 06 | 6)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Bollywood $NC -> $BLUE $Name06 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -1971,9 +1718,8 @@ echo ""
 $PLAYER "$link06" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 BollywooD
 ;;
-
 07 | 7)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Bollywood $NC -> $BLUE $Name07 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -1984,9 +1730,8 @@ echo ""
 $PLAYER "$link07" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 BollywooD
 ;;
-
 08 | 8)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Bollywood $NC -> $BLUE $Name08 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -1997,9 +1742,8 @@ echo ""
 $PLAYER "$link08" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 BollywooD
 ;;
-
 09 | 9)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Bollywood $NC -> $BLUE $Name09 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -2010,9 +1754,8 @@ echo ""
 $PLAYER "$link09" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 BollywooD
 ;;
-
 10)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Bollywood $NC -> $BLUE $Name10 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -2023,9 +1766,8 @@ echo ""
 $PLAYER "$link10" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 BollywooD
 ;;
-
 11)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Bollywood $NC -> $BLUE $Name11 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -2036,9 +1778,8 @@ echo ""
 $PLAYER "$link11" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 BollywooD
 ;;
-
 12)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Bollywood $NC -> $BLUE $Name12 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -2049,9 +1790,8 @@ echo ""
 $PLAYER "$link12" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 BollywooD
 ;;
-
 13)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Bollywood $NC -> $BLUE $Name13 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -2062,9 +1802,8 @@ echo ""
 $PLAYER "$link13" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 BollywooD
 ;;
-
 14)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Bollywood $NC -> $BLUE $Name14 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -2075,9 +1814,8 @@ echo ""
 $PLAYER "$link14" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 BollywooD
 ;;
-
 15)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Bollywood $NC -> $BLUE $Name15 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -2088,9 +1826,8 @@ echo ""
 $PLAYER "$link15" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 BollywooD
 ;;
-
 16)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Bollywood $NC -> $BLUE $Name16 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -2101,27 +1838,21 @@ echo ""
 $PLAYER "$link16" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 BollywooD
 ;;
-
 17)
-clear
+printf "\033c"
 Muzic
 ;;
-
 *)
-clear
+printf "\033c"
 echo ""
 echo -e "$RED $PLAY $NC $BLUE is an invalid selection! $NC"
 echo ""
 sleep 3
 BollywooD
 ;;
-
 esac
 }
-
-
 function ClassicaL (){
-
 Name01="1000 Classical Hits"
 Name02="A Better Classical Station"
 Name03="AMADEUS-FRIENDS Classical Radio"
@@ -2138,7 +1869,6 @@ Name13="Classical WETA"
 Name14="La Fenice Channel"
 Name15="M2 Classic"
 Name16="Musik Klassic"
-
 link01="http://streaming.radionomy.com/1000ClassicalHits"
 link02="http://streaming.radionomy.com/A-Better-Classical-Station"
 link03="http://streaming.radionomy.com/AMADEUS-FRIENDS-ClassicalRadio"
@@ -2155,9 +1885,7 @@ link13="http://38.100.128.106:8000"
 link14="http://178.32.140.82:9690"
 link15="http://sun.m2stream.fr:9000"
 link16="http://193.34.51.12:80"
-
-clear
-
+printf "\033c"
 echo -e "Stations Playing $BLUE Classical Music $NC :"
 echo ""
 echo -e "$BLUE 01 $NC $Name01"
@@ -2179,11 +1907,10 @@ echo -e "$BLUE 16 $NC $Name16"
 echo -e "$RED 17 $BLUE Return to Main Menu $NC"
 echo ""
 echo -e "Select a $BLUE station $NC between 1 to 16 and hit $BLUE [Enter] $NC to $BLUE PLAY $NC :"
-read PLAY
+read -er PLAY
 case "$PLAY" in
-
 01 | 1)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Classical $NC -> $BLUE $Name01 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -2194,9 +1921,8 @@ echo ""
 $PLAYER "$link01" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 ClassicaL
 ;;
-
 02 | 2)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Classical $NC -> $BLUE $Name02 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -2207,9 +1933,8 @@ echo ""
 $PLAYER "$link02" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 ClassicaL
 ;;
-
 03 | 3)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Classical $NC -> $BLUE $Name03 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -2220,9 +1945,8 @@ echo ""
 $PLAYER "$link03" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 ClassicaL
 ;;
-
 04 | 4)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Classical $NC -> $BLUE $Name04 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -2233,9 +1957,8 @@ echo ""
 $PLAYER "$link04" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 ClassicaL
 ;;
-
 05 | 5)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Classical $NC -> $BLUE $Name05 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -2246,9 +1969,8 @@ echo ""
 $PLAYER "$link05" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 ClassicaL
 ;;
-
 06 | 6)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Classical $NC -> $BLUE $Name06 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -2259,9 +1981,8 @@ echo ""
 $PLAYER "$link06" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 ClassicaL
 ;;
-
 07 | 7)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Classical $NC -> $BLUE $Name07 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -2272,9 +1993,8 @@ echo ""
 $PLAYER "$link07" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 ClassicaL
 ;;
-
 08 | 8)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Classical $NC -> $BLUE $Name08 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -2285,9 +2005,8 @@ echo ""
 $PLAYER "$link08" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 ClassicaL
 ;;
-
 09 | 9)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Classical $NC -> $BLUE $Name09 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -2298,9 +2017,8 @@ echo ""
 $PLAYER "$link09" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 ClassicaL
 ;;
-
 10)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Classical $NC -> $BLUE $Name10 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -2311,9 +2029,8 @@ echo ""
 $PLAYER "$link10" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 ClassicaL
 ;;
-
 11)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Classical $NC -> $BLUE $Name11 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -2324,9 +2041,8 @@ echo ""
 $PLAYER "$link11" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 ClassicaL
 ;;
-
 12)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Classical $NC -> $BLUE $Name12 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -2337,9 +2053,8 @@ echo ""
 $PLAYER "$link12" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 ClassicaL
 ;;
-
 13)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Classical $NC -> $BLUE $Name13 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -2350,9 +2065,8 @@ echo ""
 $PLAYER "$link13" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 ClassicaL
 ;;
-
 14)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Classical $NC -> $BLUE $Name14 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -2363,9 +2077,8 @@ echo ""
 $PLAYER "$link14" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 ClassicaL
 ;;
-
 15)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Classical $NC -> $BLUE $Name15 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -2376,9 +2089,8 @@ echo ""
 $PLAYER "$link15" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 ClassicaL
 ;;
-
 16)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Classical $NC -> $BLUE $Name16 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -2389,27 +2101,21 @@ echo ""
 $PLAYER "$link16" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 ClassicaL
 ;;
-
 17)
-clear
+printf "\033c"
 Muzic
 ;;
-
 *)
-clear
+printf "\033c"
 echo ""
 echo -e "$RED $PLAY $NC $BLUE is an invalid selection! $NC"
 echo ""
 sleep 3
 ClassicaL
 ;;
-
 esac
 }
-
-
 function CountrY (){
-
 Name01="1071 WNIH"
 Name02="A Better Country Station"
 Name03="A Country Dream"
@@ -2426,7 +2132,6 @@ Name13="Bluegrass Mix"
 Name14="Country Music 24"
 Name15="Country Radio Switzerland"
 Name16="Highway Radio"
-
 link01="http://listen.radionomy.com/1071WNIH"
 link02="http://streaming.radionomy.com/a-better-country-station"
 link03="http://streaming.radionomy.com/ACOUNTRYDREAM-Western24H"
@@ -2443,9 +2148,7 @@ link13="http://192.81.248.194:8072/stream"
 link14="http://countrymusic24.powerstream.de:9000"
 link15="http://212.48.126.146:8000"
 link16="http://listen.streamonomy.com/113fmHighwayRadio"
-
-clear
-
+printf "\033c"
 echo -e "Stations Playing $BLUE Country Music $NC :"
 echo ""
 echo -e "$BLUE 01 $NC $Name01"
@@ -2467,11 +2170,10 @@ echo -e "$BLUE 16 $NC $Name16"
 echo -e "$RED 17 $BLUE Return to Main Menu $NC"
 echo ""
 echo -e "Select a $BLUE station $NC between 1 to 16 and hit $BLUE [Enter] $NC to $BLUE PLAY $NC :"
-read PLAY
+read -er PLAY
 case "$PLAY" in
-
 01 | 1)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Country $NC -> $BLUE $Name01 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -2482,9 +2184,8 @@ echo ""
 $PLAYER "$link01" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 CountrY
 ;;
-
 02 | 2)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Country $NC -> $BLUE $Name02 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -2495,9 +2196,8 @@ echo ""
 $PLAYER "$link02" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 CountrY
 ;;
-
 03 | 3)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Country $NC -> $BLUE $Name03 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -2508,9 +2208,8 @@ echo ""
 $PLAYER "$link03" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 CountrY
 ;;
-
 04 | 4)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Country $NC -> $BLUE $Name04 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -2521,9 +2220,8 @@ echo ""
 $PLAYER "$link04" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 CountrY
 ;;
-
 05 | 5)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Country $NC -> $BLUE $Name05 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -2534,9 +2232,8 @@ echo ""
 $PLAYER "$link05" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 CountrY
 ;;
-
 06 | 6)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Country $NC -> $BLUE $Name06 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -2547,9 +2244,8 @@ echo ""
 $PLAYER "$link06" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 CountrY
 ;;
-
 07 | 7)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Country $NC -> $BLUE $Name07 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -2560,9 +2256,8 @@ echo ""
 $PLAYER "$link07" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 CountrY
 ;;
-
 08 | 8)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Country $NC -> $BLUE $Name08 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -2573,9 +2268,8 @@ echo ""
 $PLAYER "$link08" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 CountrY
 ;;
-
 09 | 9)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Country $NC -> $BLUE $Name09 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -2586,9 +2280,8 @@ echo ""
 $PLAYER "$link09" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 CountrY
 ;;
-
 10)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Country $NC -> $BLUE $Name10 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -2599,9 +2292,8 @@ echo ""
 $PLAYER "$link10" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 CountrY
 ;;
-
 11)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Country $NC -> $BLUE $Name11 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -2612,9 +2304,8 @@ echo ""
 $PLAYER "$link11" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 CountrY
 ;;
-
 12)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Country $NC -> $BLUE $Name12 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -2625,9 +2316,8 @@ echo ""
 $PLAYER "$link12" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 CountrY
 ;;
-
 13)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Country $NC -> $BLUE $Name13 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -2638,9 +2328,8 @@ echo ""
 $PLAYER "$link13" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 CountrY
 ;;
-
 14)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Country $NC -> $BLUE $Name14 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -2651,9 +2340,8 @@ echo ""
 $PLAYER "$link14" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 CountrY
 ;;
-
 15)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Country $NC -> $BLUE $Name15 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -2664,9 +2352,8 @@ echo ""
 $PLAYER "$link15" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 CountrY
 ;;
-
 16)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Country $NC -> $BLUE $Name16 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -2677,27 +2364,21 @@ echo ""
 $PLAYER "$link16" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 CountrY
 ;;
-
 17)
-clear
+printf "\033c"
 Muzic
 ;;
-
 *)
-clear
+printf "\033c"
 echo ""
 echo -e "$RED $PLAY $NC $BLUE is an invalid selection! $NC"
 echo ""
 sleep 3
 CountrY
 ;;
-
 esac
 }
-
-
 function ElectroniC (){
-
 Name01="100 DJAY"
 Name02="Air Lounge"
 Name03="Ambient Sleeping Pill"
@@ -2714,7 +2395,6 @@ Name13="Frisky"
 Name14="Nirvana Radio"
 Name15="RJM Lounge"
 Name16="Puls Radio"
-
 link01="http://streaming.radionomy.com/100-DJAY"
 link02="http://streaming.radionomy.com/air-lounge"
 link03="http://50.7.96.138:8235/stream"
@@ -2731,9 +2411,7 @@ link13="http://stream.friskyradio.com:8000/frisky_mp3_hi"
 link14="http://91.121.134.15:9106"
 link15="http://streaming.radionomy.com/RJM-Lounge"
 link16="http://212.83.185.51:80"
-
-clear
-
+printf "\033c"
 echo -e "Stations Playing $BLUE Electronic Music $NC :"
 echo ""
 echo -e "$BLUE 01 $NC $Name01"
@@ -2755,11 +2433,10 @@ echo -e "$BLUE 16 $NC $Name16"
 echo -e "$RED 17 $BLUE Return to Main Menu $NC"
 echo ""
 echo -e "Select a $BLUE station $NC between 1 to 16 and hit $BLUE [Enter] $NC to $BLUE PLAY $NC :"
-read PLAY
+read -er PLAY
 case "$PLAY" in
-
 01 | 1)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Electronic $NC -> $BLUE $Name01 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -2770,9 +2447,8 @@ echo ""
 $PLAYER "$link01" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 ElectroniC
 ;;
-
 02 | 2)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Electronic $NC -> $BLUE $Name02 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -2783,9 +2459,8 @@ echo ""
 $PLAYER "$link02" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 ElectroniC
 ;;
-
 03 | 3)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Electronic $NC -> $BLUE $Name04 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -2796,9 +2471,8 @@ echo ""
 $PLAYER "$link03" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 ElectroniC
 ;;
-
 04 | 4)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Electronic $NC -> $BLUE $Name04 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -2809,9 +2483,8 @@ echo ""
 $PLAYER "$link04" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 ElectroniC
 ;;
-
 05 | 5)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Electronic $NC -> $BLUE $Name05 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -2822,9 +2495,8 @@ echo ""
 $PLAYER "$link05" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 ElectroniC
 ;;
-
 06 | 6)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Electronic $NC -> $BLUE $Name06 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -2835,9 +2507,8 @@ echo ""
 $PLAYER "$link06" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 ElectroniC
 ;;
-
 07 | 7)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Electronic $NC -> $BLUE $Name07 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -2848,9 +2519,8 @@ echo ""
 $PLAYER "$link07" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 ElectroniC
 ;;
-
 08 | 8)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Electronic $NC -> $BLUE $Name08 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -2861,9 +2531,8 @@ echo ""
 $PLAYER "$link08" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 ElectroniC
 ;;
-
 09 | 9)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Electronic $NC -> $BLUE $Name09 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -2874,9 +2543,8 @@ echo ""
 $PLAYER "$link09" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 ElectroniC
 ;;
-
 10)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Electronic $NC -> $BLUE $Name10 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -2887,9 +2555,8 @@ echo ""
 $PLAYER "$link10" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 ElectroniC
 ;;
-
 11)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Electronic $NC -> $BLUE $Name11 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -2900,9 +2567,8 @@ echo ""
 $PLAYER "$link11" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 ElectroniC
 ;;
-
 12)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Electronic $NC -> $BLUE $Name12 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -2913,9 +2579,8 @@ echo ""
 $PLAYER "$link12" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 ElectroniC
 ;;
-
 13)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Electronic $NC -> $BLUE $Name13 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -2926,9 +2591,8 @@ echo ""
 $PLAYER "$link13" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 ElectroniC
 ;;
-
 14)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Electronic $NC -> $BLUE $Name14 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -2939,9 +2603,8 @@ echo ""
 $PLAYER "$link14" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 ElectroniC
 ;;
-
 15)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Electronic $NC -> $BLUE $Name15 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -2952,9 +2615,8 @@ echo ""
 $PLAYER "$link15" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 ElectroniC
 ;;
-
 16)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Electronic $NC -> $BLUE $Name16 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -2965,27 +2627,21 @@ echo ""
 $PLAYER "$link16" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 ElectroniC
 ;;
-
 17)
-clear
+printf "\033c"
 Muzic
 ;;
-
 *)
-clear
+printf "\033c"
 echo ""
 echo -e "$RED $PLAY $NC $BLUE is an invalid selection! $NC"
 echo ""
 sleep 3
 ElectroniC
 ;;
-
 esac
 }
-
-
 function HitS (){
-
 Name01="1 Beats"
 Name02="1 Hits"
 Name03="100 Hit Radio"
@@ -3002,7 +2658,6 @@ Name13="Hit Station FM"
 Name14="Megahit Radio"
 Name15="Raute Music"
 Name16="Venus FM"
-
 link01="http://streaming.radionomy.com/-1Beats"
 link02="http://streaming.radionomy.com/-1Hits"
 link03="http://streaming.radionomy.com/100-HIT-radio"
@@ -3019,9 +2674,7 @@ link13="http://46.163.124.61:8450"
 link14="http://87.118.122.45:30710"
 link15="http://193.34.51.67:80"
 link16="http://s3.onweb.gr:8808"
-
-clear
-
+printf "\033c"
 echo -e "Stations Playing latest'n'greatest $BLUE Hits Music $NC :"
 echo ""
 echo -e "$BLUE 01 $NC $Name01"
@@ -3043,11 +2696,10 @@ echo -e "$BLUE 16 $NC $Name16"
 echo -e "$RED 17 $BLUE Return to Main Menu $NC"
 echo ""
 echo -e "Select a $BLUE station $NC between 1 to 16 and hit $BLUE [Enter] $NC to $BLUE PLAY $NC :"
-read PLAY
+read -er PLAY
 case "$PLAY" in
-
 01 | 1)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Hits $NC -> $BLUE $Name01 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -3058,9 +2710,8 @@ echo ""
 $PLAYER "$link01" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 HitS
 ;;
-
 02 | 2)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Hits $NC -> $BLUE $Name02 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -3071,9 +2722,8 @@ echo ""
 $PLAYER "$link02" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 HitS
 ;;
-
 03 | 3)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Hits $NC -> $BLUE $Name03 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -3084,9 +2734,8 @@ echo ""
 $PLAYER "$link03" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 HitS
 ;;
-
 04 | 4)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Hits $NC -> $BLUE $Name04 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -3097,9 +2746,8 @@ echo ""
 $PLAYER "$link04" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 HitS
 ;;
-
 05 | 5)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Hits $NC -> $BLUE $Name05 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -3110,9 +2758,8 @@ echo ""
 $PLAYER "$link05" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 HitS
 ;;
-
 06 | 6)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Hits $NC -> $BLUE $Name06 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -3123,9 +2770,8 @@ echo ""
 $PLAYER "$link06" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 HitS
 ;;
-
 07 | 7)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Hits $NC -> $BLUE $Name07 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -3136,9 +2782,8 @@ echo ""
 $PLAYER "$link07" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 HitS
 ;;
-
 08 | 8)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Hits $NC -> $BLUE $Name08 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -3149,9 +2794,8 @@ echo ""
 $PLAYER "$link08" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 HitS
 ;;
-
 09 | 9)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Hits $NC -> $BLUE $Name09 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -3162,9 +2806,8 @@ echo ""
 $PLAYER "$link09" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 HitS
 ;;
-
 10)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Hits $NC -> $BLUE $Name10 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -3175,9 +2818,8 @@ echo ""
 $PLAYER "$link10" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 HitS
 ;;
-
 11)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Hits $NC -> $BLUE $Name11 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -3188,9 +2830,8 @@ echo ""
 $PLAYER "$link11" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 HitS
 ;;
-
 12)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Hits $NC -> $BLUE $Name12 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -3201,9 +2842,8 @@ echo ""
 $PLAYER "$link12" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 HitS
 ;;
-
 13)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Hits $NC -> $BLUE $Name13 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -3214,9 +2854,8 @@ echo ""
 $PLAYER "$link13" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 HitS
 ;;
-
 14)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Hits $NC -> $BLUE $Name14 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -3227,9 +2866,8 @@ echo ""
 $PLAYER "$link14" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 HitS
 ;;
-
 15)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Hits $NC -> $BLUE $Name15 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -3240,9 +2878,8 @@ echo ""
 $PLAYER "$link15" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 HitS
 ;;
-
 16)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Hits $NC -> $BLUE $Name16 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -3253,27 +2890,21 @@ echo ""
 $PLAYER "$link16" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 HitS
 ;;
-
 17)
-clear
+printf "\033c"
 Muzic
 ;;
-
 *)
-clear
+printf "\033c"
 echo ""
 echo -e "$RED $PLAY $NC $BLUE is an invalid selection! $NC"
 echo ""
 sleep 3
 HitS
 ;;
-
 esac
 }
-
-
 function JazZ (){
-
 Name01="4U Smooth Jazz"
 Name02="A Jazz Dream"
 Name03="Abaco Libros Y Cafe Radio"
@@ -3290,7 +2921,6 @@ Name13="Big Blue Swing"
 Name14="JazzBit"
 Name15="Public Domain Jazz"
 Name16="SmoothJazz Global Radio"
-
 link01="http://streaming.radionomy.com/4u-smooth-jazz"
 link02="http://streaming.radionomy.com/AJAZZDREAM-Classic-NewJazz24H"
 link03="http://listen.radionomy.com/-BACO-LIBROS-Y-CAF--RADIO"
@@ -3307,9 +2937,7 @@ link13="http://www.bigblueswing.com:8002"
 link14="http://213.158.233.199:2042"
 link15="http://82.197.165.138:80"
 link16="http://sj128.hnux.com"
-
-clear
-
+printf "\033c"
 echo -e "Stations Playing $BLUE Jazz Music $NC :"
 echo ""
 echo -e "$BLUE 01 $NC $Name01"
@@ -3331,11 +2959,10 @@ echo -e "$BLUE 16 $NC $Name16"
 echo -e "$RED 17 $BLUE Return to Main Menu $NC"
 echo ""
 echo -e "Select a $BLUE station $NC between 1 to 16 and hit $BLUE [Enter] $NC to $BLUE PLAY $NC :"
-read PLAY
+read -er PLAY
 case "$PLAY" in
-
 01 | 1)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Jazz $NC -> $BLUE $Name01 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -3346,9 +2973,8 @@ echo ""
 $PLAYER "$link01" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 JazZ
 ;;
-
 02 | 2)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Jazz $NC -> $BLUE $Name02 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -3359,9 +2985,8 @@ echo ""
 $PLAYER "$link02" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 JazZ
 ;;
-
 03 | 3)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Jazz $NC -> $BLUE $Name03 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -3372,9 +2997,8 @@ echo ""
 $PLAYER "$link03" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 JazZ
 ;;
-
 04 | 4)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Jazz $NC -> $BLUE $Name04 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -3385,9 +3009,8 @@ echo ""
 $PLAYER "$link04" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 JazZ
 ;;
-
 05 | 5)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Jazz $NC -> $BLUE $Name05 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -3398,9 +3021,8 @@ echo ""
 $PLAYER "$link05" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 JazZ
 ;;
-
 06 | 6)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Jazz $NC -> $BLUE $Name06 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -3411,9 +3033,8 @@ echo ""
 $PLAYER "$link06" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 JazZ
 ;;
-
 07 | 7)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Jazz $NC -> $BLUE $Name07 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -3424,9 +3045,8 @@ echo ""
 $PLAYER "$link07" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 JazZ
 ;;
-
 08 | 8)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Jazz $NC -> $BLUE $Name08 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -3437,9 +3057,8 @@ echo ""
 $PLAYER "$link08" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 JazZ
 ;;
-
 09 | 9)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Jazz $NC -> $BLUE $Name09 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -3450,9 +3069,8 @@ echo ""
 $PLAYER "$link09" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 JazZ
 ;;
-
 10)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Jazz $NC -> $BLUE $Name10 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -3463,9 +3081,8 @@ echo ""
 $PLAYER "$link10" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 JazZ
 ;;
-
 11)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Jazz $NC -> $BLUE $Name11 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -3476,9 +3093,8 @@ echo ""
 $PLAYER "$link11" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 JazZ
 ;;
-
 12)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Jazz $NC -> $BLUE $Name12 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -3489,9 +3105,8 @@ echo ""
 $PLAYER "$link12" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 JazZ
 ;;
-
 13)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Jazz $NC -> $BLUE $Name13 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -3502,9 +3117,8 @@ echo ""
 $PLAYER "$link13" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 JazZ
 ;;
-
 14)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Jazz $NC -> $BLUE $Name14 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -3515,9 +3129,8 @@ echo ""
 $PLAYER "$link14" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 JazZ
 ;;
-
 15)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Jazz $NC -> $BLUE $Name15 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -3528,9 +3141,8 @@ echo ""
 $PLAYER "$link15" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 JazZ
 ;;
-
 16)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Jazz $NC -> $BLUE $Name16 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -3541,27 +3153,21 @@ echo ""
 $PLAYER "$link16" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 JazZ
 ;;
-
 17)
-clear
+printf "\033c"
 Muzic
 ;;
-
 *)
-clear
+printf "\033c"
 echo ""
 echo -e "$RED $PLAY $NC $BLUE is an invalid selection! $NC"
 echo ""
 sleep 3
 JazZ
 ;;
-
 esac
 }
-
-
 function ListeneR (){
-
 Name01="AI-Radio"
 Name02="C89.5 FM"
 Name03="CHIRP Radio"
@@ -3612,7 +3218,6 @@ Name47="MJoy Radio-Z"
 Name48="MJoy Urban Space"
 Name49="DFM RTV INT"
 Name50="Ralph Radio"
-
 link01="http://ai-radio.org/128.ogg"
 link02="http://208.76.152.74:8000"
 link03="http://chirpradio.org/stream"
@@ -3663,9 +3268,7 @@ link47="http://stream.mjoy.ua:8000/radio-z-kryjivky"
 link48="http://stream.mjoy.ua:8000/urban-space-radio"
 link49="http://176.9.138.209:8205/dfm_1"
 link50="http://213.177.96.6:9900/ralph128"
-
-clear
-
+printf "\033c"
 echo -e "$BLUE Medley $NC Collection of Good Radio $BLUE Stations $NC : "
 echo ""
 echo -e "$BLUE 01 $NC $Name01          $BLUE 18 $NC $Name18             $BLUE 35 $NC $Name35"
@@ -3687,25 +3290,23 @@ echo -e "$BLUE 16 $NC $Name16         $BLUE 33 $NC $Name33         $BLUE 50 $NC 
 echo -e "$BLUE 17 $NC $Name17      $BLUE 34 $NC $Name34         $RED 51 $BLUE Return to Main Menu $NC"
 echo ""
 echo -e "Select a $BLUE station $NC between 1 to 50 and hit $BLUE [Enter] $NC to $BLUE PLAY $NC :"
-read PLAY
+read -er PLAY
 case "$PLAY" in
-
 01 | 1)
-clear
-command -v ogg123 >/dev/null 2>&1 || { echo -e "$RED AI-Radio needs 'ogg123' but it's not installed! Install it to play AI-Radio. $NC" >&2; read -rsp $'Press any key to continue...\n' -n1 key; ListeneR; }
+printf "\033c"
+command -v ogg123 >/dev/null 2>&1 || { printf "\033c"; echo -e "$RED AI-Radio needs 'ogg123' but it's not installed! Install it to play AI-Radio. $NC" >&2; read -rsp $'Press any key to continue...\n' -n1 key; ListeneR; }
 echo -e "$RED Important $NC - AI-Radio is a bit different"
 echo ""
 echo -e "You'll have to press $BLUE [Ctrl-C] $NC to stop AI-Radio"
 echo ""
 read -rsp $'Press any key to start AI-Radio...\n' -n1 key
 echo ""
-clear
+printf "\033c"
 ogg123 --buffer 512 --prebuffer 25 "$link01" 2>&1 /dev/null
 ListeneR
 ;;
-
 02 | 2)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Medley $NC -> $BLUE $Name02 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -3716,9 +3317,8 @@ echo ""
 $PLAYER "$link02" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 ListeneR
 ;;
-
 03 | 3)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Medley $NC -> $BLUE $Name03 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -3729,9 +3329,8 @@ echo ""
 $PLAYER "$link03" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 ListeneR
 ;;
-
 04 | 4)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Medley $NC -> $BLUE Heartland Public Radio - Bluegrass Gospel $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -3742,9 +3341,8 @@ echo ""
 $PLAYER "$link04" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 ListeneR
 ;;
-
 05 | 5)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Medley $NC -> $BLUE Heartland Public Radio - Today's Classic Country $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -3755,9 +3353,8 @@ echo ""
 $PLAYER "$link05" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 ListeneR
 ;;
-
 06 | 6)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Medley $NC -> $BLUE Heartland Public Radio - Traditional Classic Country $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -3768,9 +3365,8 @@ echo ""
 $PLAYER "$link06" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 ListeneR
 ;;
-
 07 | 7)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Medley $NC -> $BLUE $Name07 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -3781,9 +3377,8 @@ echo ""
 $PLAYER "$link07" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 ListeneR
 ;;
-
 08 | 8)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Medley $NC -> $BLUE $Name08 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -3794,9 +3389,8 @@ echo ""
 $PLAYER "$link08" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 ListeneR
 ;;
-
 09 | 9)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Medley $NC -> $BLUE $Name09 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -3807,9 +3401,8 @@ echo ""
 $PLAYER "$link09" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 ListeneR
 ;;
-
 10)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Medley $NC -> $BLUE Minnesota Public Radio $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -3820,9 +3413,8 @@ echo ""
 $PLAYER "$link10" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 ListeneR
 ;;
-
 11)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Medley $NC -> $BLUE $Name11 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -3833,9 +3425,8 @@ echo ""
 $PLAYER "$link11" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 ListeneR
 ;;
-
 12)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Medley $NC -> $BLUE $Name12 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -3846,9 +3437,8 @@ echo ""
 $PLAYER "$link12" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 ListeneR
 ;;
-
 13)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Medley $NC -> $BLUE $Name13 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -3859,9 +3449,8 @@ echo ""
 $PLAYER "$link13" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 ListeneR
 ;;
-
 14)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Medley $NC -> $BLUE $Name14 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -3872,9 +3461,8 @@ echo ""
 $PLAYER "$link14" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 ListeneR
 ;;
-
 15)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Medley $NC -> $BLUE $Name15 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -3885,9 +3473,8 @@ echo ""
 $PLAYER "$link15" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 ListeneR
 ;;
-
 16)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Medley $NC -> $BLUE $Name16 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -3898,9 +3485,8 @@ echo ""
 $PLAYER "$link16" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 ListeneR
 ;;
-
 17)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Medley $NC -> $BLUE Community Radio WERU $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -3911,9 +3497,8 @@ echo ""
 $PLAYER "$link17" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 ListeneR
 ;;
-
 18)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Medley $NC -> $BLUE WFMU Freeform Radio $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -3924,9 +3509,8 @@ echo ""
 $PLAYER "$link18" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 ListeneR
 ;;
-
 19)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Medley $NC -> $BLUE WNCU Public Radio $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -3937,9 +3521,8 @@ echo ""
 $PLAYER "$link19" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 ListeneR
 ;;
-
 20)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Medley $NC -> $BLUE $Name20 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -3950,9 +3533,8 @@ echo ""
 $PLAYER "$link20" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 ListeneR
 ;;
-
 21)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Medley $NC -> $BLUE $Name21 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -3963,9 +3545,8 @@ echo ""
 $PLAYER "$link21" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 ListeneR
 ;;
-
 22)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Medley $NC -> $BLUE $Name22 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -3976,9 +3557,8 @@ echo ""
 $PLAYER "$link22" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 ListeneR
 ;;
-
 23)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Medley $NC -> $BLUE $Name23 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -3989,9 +3569,8 @@ echo ""
 $PLAYER "$link23" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 ListeneR
 ;;
-
 24)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Medley $NC -> $BLUE $Name24 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -4002,9 +3581,8 @@ echo ""
 $PLAYER "$link24" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 ListeneR
 ;;
-
 25)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Medley $NC -> $BLUE $Name25 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -4015,9 +3593,8 @@ echo ""
 $PLAYER "$link25" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 ListeneR
 ;;
-
 26)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Medley $NC -> $BLUE $Name26 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -4028,9 +3605,8 @@ echo ""
 $PLAYER "$link26" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 ListeneR
 ;;
-
 27)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Medley $NC -> $BLUE $Name27 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -4041,9 +3617,8 @@ echo ""
 $PLAYER "$link27" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 ListeneR
 ;;
-
 28)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Medley $NC -> $BLUE $Name28 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -4054,9 +3629,8 @@ echo ""
 $PLAYER "$link28" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 ListeneR
 ;;
-
 29)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Medley $NC -> $BLUE $Name29 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -4067,9 +3641,8 @@ echo ""
 $PLAYER "$link29" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 ListeneR
 ;;
-
 30)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Medley $NC -> $BLUE $Name30 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -4080,9 +3653,8 @@ echo ""
 $PLAYER "$link30" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 ListeneR
 ;;
-
 31)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Medley $NC -> $BLUE $Name31 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -4093,9 +3665,8 @@ echo ""
 $PLAYER "$link31" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 ListeneR
 ;;
-
 32)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Medley $NC -> $BLUE $Name32 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -4106,9 +3677,8 @@ echo ""
 $PLAYER "$link32" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 ListeneR
 ;;
-
 33)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Medley $NC -> $BLUE $Name33 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -4119,9 +3689,8 @@ echo ""
 $PLAYER "$link33" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 ListeneR
 ;;
-
 34)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Medley $NC -> $BLUE $Name34 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -4132,9 +3701,8 @@ echo ""
 $PLAYER "$link34" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 ListeneR
 ;;
-
 35)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Medley $NC -> $BLUE $Name35 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -4145,9 +3713,8 @@ echo ""
 $PLAYER "$link35" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 ListeneR
 ;;
-
 36)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Medley $NC -> $BLUE $Name36 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -4158,9 +3725,8 @@ echo ""
 $PLAYER "$link36" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 ListeneR
 ;;
-
 37)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Medley $NC -> $BLUE $Name37 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -4171,9 +3737,8 @@ echo ""
 $PLAYER "$link37" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 ListeneR
 ;;
-
 38)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Medley $NC -> $BLUE $Name38 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -4184,9 +3749,8 @@ echo ""
 $PLAYER "$link38" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 ListeneR
 ;;
-
 39)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Medley $NC -> $BLUE $Name39 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -4197,9 +3761,8 @@ echo ""
 $PLAYER "$link39" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 ListeneR
 ;;
-
 40)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Medley $NC -> $BLUE $Name40 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -4210,9 +3773,8 @@ echo ""
 $PLAYER "$link40" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 ListeneR
 ;;
-
 41)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Medley $NC -> $BLUE $Name41 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -4223,9 +3785,8 @@ echo ""
 $PLAYER "$link41" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 ListeneR
 ;;
-
 42)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Medley $NC -> $BLUE $Name42 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -4236,9 +3797,8 @@ echo ""
 $PLAYER "$link42" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 ListeneR
 ;;
-
 43)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Medley $NC -> $BLUE $Name43 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -4249,9 +3809,8 @@ echo ""
 $PLAYER "$link43" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 ListeneR
 ;;
-
 44)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Medley $NC -> $BLUE $Name44 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -4262,9 +3821,8 @@ echo ""
 $PLAYER "$link44" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 ListeneR
 ;;
-
 45)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Medley $NC -> $BLUE $Name45 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -4275,9 +3833,8 @@ echo ""
 $PLAYER "$link45" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 ListeneR
 ;;
-
 46)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Medley $NC -> $BLUE $Name46 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -4288,9 +3845,8 @@ echo ""
 $PLAYER "$link46" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 ListeneR
 ;;
-
 47)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Medley $NC -> $BLUE $Name47 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -4301,9 +3857,8 @@ echo ""
 $PLAYER "$link47" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 ListeneR
 ;;
-
 48)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Medley $NC -> $BLUE $Name48 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -4314,9 +3869,8 @@ echo ""
 $PLAYER "$link48" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 ListeneR
 ;;
-
 49)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Medley $NC -> $BLUE $Name49 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -4327,9 +3881,8 @@ echo ""
 $PLAYER "$link49" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 ListeneR
 ;;
-
 50)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Medley $NC -> $BLUE $Name50 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -4340,27 +3893,21 @@ echo ""
 $PLAYER "$link50" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 ListeneR
 ;;
-
 51)
-clear
+printf "\033c"
 Muzic
 ;;
-
 *)
-clear
+printf "\033c"
 echo ""
 echo -e "$RED $PLAY $NC $BLUE is an invalid selection! $NC"
 echo ""
 sleep 3
 ListeneR
 ;;
-
 esac
 }
-
-
 function MetaL (){
-
 Name01="4U Hard FM"
 Name02="Crucial Velocity Radio"
 Name03="DTHM"
@@ -4377,7 +3924,6 @@ Name13="Braingell Radio"
 Name14="KNAC"
 Name15="Metal Express Radio"
 Name16="Radio Gothic"
-
 link01="http://streaming.radionomy.com/4U-Hard-FM"
 link02="http://streaming.radionomy.com/CrucialVelocityRadio"
 link03="http://listen.radionomy.com/Death-Thrash--Heavy-Metal"
@@ -4394,9 +3940,7 @@ link13="http://206.217.213.16:8010"
 link14="http://s5.voscast.com:7346"
 link15="http://66.90.104.41:8248"
 link16="http://ca.radio-streamhosting.com:8006"
-
-clear
-
+printf "\033c"
 echo -e "Stations Playing $BLUE Metal Music $NC :"
 echo ""
 echo -e "$BLUE 01 $NC $Name01"
@@ -4418,11 +3962,10 @@ echo -e "$BLUE 16 $NC $Name16"
 echo -e "$RED 17 $BLUE Return to Main Menu $NC"
 echo ""
 echo -e "Select a $BLUE station $NC between 1 to 16 and hit $BLUE [Enter] $NC to $BLUE PLAY $NC :"
-read PLAY
+read -er PLAY
 case "$PLAY" in
-
 01 | 1)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Metal $NC -> $BLUE $Name01 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -4433,9 +3976,8 @@ echo ""
 $PLAYER "$link01" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 MetaL
 ;;
-
 02 | 2)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Metal $NC -> $BLUE $Name02 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -4446,9 +3988,8 @@ echo ""
 $PLAYER "$link02" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 MetaL
 ;;
-
 03 | 3)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Metal $NC -> $BLUE $Name03 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -4459,9 +4000,8 @@ echo ""
 $PLAYER "$link03" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 MetaL
 ;;
-
 04 | 4)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Metal $NC -> $BLUE $Name04 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -4472,9 +4012,8 @@ echo ""
 $PLAYER "$link04" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 MetaL
 ;;
-
 05 | 5)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Metal $NC -> $BLUE $Name05 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -4485,9 +4024,8 @@ echo ""
 $PLAYER "$link05" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 MetaL
 ;;
-
 06 | 6)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Metal $NC -> $BLUE $Name06 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -4498,9 +4036,8 @@ echo ""
 $PLAYER "$link06" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 MetaL
 ;;
-
 07 | 7)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Metal $NC -> $BLUE $Name07 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -4511,9 +4048,8 @@ echo ""
 $PLAYER "$link07" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 MetaL
 ;;
-
 08 | 8)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Metal $NC -> $BLUE $Name08 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -4524,9 +4060,8 @@ echo ""
 $PLAYER "$link08" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 MetaL
 ;;
-
 09 | 9)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Metal $NC -> $BLUE $Name09 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -4537,9 +4072,8 @@ echo ""
 $PLAYER "$link09" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 MetaL
 ;;
-
 10)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Metal $NC -> $BLUE $Name10 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -4550,9 +4084,8 @@ echo ""
 $PLAYER "$link10" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 MetaL
 ;;
-
 11)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Metal $NC -> $BLUE $Name11 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -4563,9 +4096,8 @@ echo ""
 $PLAYER "$link11" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 MetaL
 ;;
-
 12)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Metal $NC -> $BLUE $Name12 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -4576,9 +4108,8 @@ echo ""
 $PLAYER "$link12" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 MetaL
 ;;
-
 13)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Metal $NC -> $BLUE $Name13 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -4589,9 +4120,8 @@ echo ""
 $PLAYER "$link13" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 MetaL
 ;;
-
 14)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Metal $NC -> $BLUE $Name14 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -4602,9 +4132,8 @@ echo ""
 $PLAYER "$link14" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 MetaL
 ;;
-
 15)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Metal $NC -> $BLUE $Name15 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -4615,9 +4144,8 @@ echo ""
 $PLAYER "$link15" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 MetaL
 ;;
-
 16)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Metal $NC -> $BLUE $Name16 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -4628,27 +4156,21 @@ echo ""
 $PLAYER "$link16" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 MetaL
 ;;
-
 17)
-clear
+printf "\033c"
 Muzic
 ;;
-
 *)
-clear
+printf "\033c"
 echo ""
 echo -e "$RED $PLAY $NC $BLUE is an invalid selection! $NC"
 echo ""
 sleep 3
 MetaL
 ;;
-
 esac
 }
-
-
 function NewS (){
-
 Name01="Air Progressive"
 Name02="BBC"
 Name03="CBC"
@@ -4665,7 +4187,6 @@ Name13="Infowars"
 Name14="KSFC"
 Name15="Radio Newark"
 Name16="Talk 790"
-
 link01="http://airprogressive.org:8000/stream"
 link02="http://bbcwssc.ic.llnwd.net/stream/bbcwssc_mp1_ws-einws"
 link03="http://3153.live.streamtheworld.com:80/CBC_R1_MCT_L_SC"
@@ -4682,9 +4203,7 @@ link13="http://50.7.79.22:80"
 link14="http://173.192.70.138:8710"
 link15="http://98.114.57.7:8000"
 link16="http://208.85.240.2:8310"
-
-clear
-
+printf "\033c"
 echo -e "Stations Providing $BLUE News & Current Affairs $NC :"
 echo ""
 echo -e "$BLUE 01 $NC $Name01"
@@ -4706,11 +4225,10 @@ echo -e "$BLUE 16 $NC $Name16"
 echo -e "$RED 17 $BLUE Return to Main Menu $NC"
 echo ""
 echo -e "Select a $BLUE station $NC between 1 to 16 and hit $BLUE [Enter] $NC to $BLUE PLAY $NC :"
-read PLAY
+read -er PLAY
 case "$PLAY" in
-
 01 | 1)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE News $NC -> $BLUE $Name01 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -4721,9 +4239,8 @@ echo ""
 $PLAYER "$link01" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 NewS
 ;;
-
 02 | 2)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE News $NC -> $BLUE $Name02 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -4734,9 +4251,8 @@ echo ""
 $PLAYER "$link02" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 NewS
 ;;
-
 03 | 3)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE News $NC -> $BLUE $Name03 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -4747,9 +4263,8 @@ echo ""
 $PLAYER "$link03" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 NewS
 ;;
-
 04 | 4)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE News $NC -> $BLUE $Name04 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -4760,9 +4275,8 @@ echo ""
 $PLAYER "$link04" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 NewS
 ;;
-
 05 | 5)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE News $NC -> $BLUE $Name05 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -4773,9 +4287,8 @@ echo ""
 $PLAYER "$link05" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 NewS
 ;;
-
 06 | 6)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE News $NC -> $BLUE $Name06 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -4786,9 +4299,8 @@ echo ""
 $PLAYER "$link06" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 NewS
 ;;
-
 07 | 7)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE News $NC -> $BLUE $Name07 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -4799,9 +4311,8 @@ echo ""
 $PLAYER "$link07" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 NewS
 ;;
-
 08 | 8)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE News $NC -> $BLUE $Name08 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -4812,9 +4323,8 @@ echo ""
 $PLAYER "$link08" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 NewS
 ;;
-
 09 | 9)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE News $NC -> $BLUE $Name09 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -4825,9 +4335,8 @@ echo ""
 $PLAYER "$link09" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 NewS
 ;;
-
 10)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE News $NC -> $BLUE $Name10 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -4838,9 +4347,8 @@ echo ""
 $PLAYER "$link10" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 NewS
 ;;
-
 11)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE News $NC -> $BLUE $Name11 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -4851,9 +4359,8 @@ echo ""
 $PLAYER "$link11" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 NewS
 ;;
-
 12)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE News $NC -> $BLUE $Name12 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -4864,9 +4371,8 @@ echo ""
 $PLAYER "$link12" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 NewS
 ;;
-
 13)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE News $NC -> $BLUE $Name13 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -4877,9 +4383,8 @@ echo ""
 $PLAYER "$link13" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 NewS
 ;;
-
 14)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE News $NC -> $BLUE $Name14 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -4890,9 +4395,8 @@ echo ""
 $PLAYER "$link14" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 NewS
 ;;
-
 15)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE News $NC -> $BLUE $Name15 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -4903,9 +4407,8 @@ echo ""
 $PLAYER "$link15" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 NewS
 ;;
-
 16)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE News $NC -> $BLUE $Name16 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -4916,27 +4419,21 @@ echo ""
 $PLAYER "$link16" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 NewS
 ;;
-
 17)
-clear
+printf "\033c"
 Muzic
 ;;
-
 *)
-clear
+printf "\033c"
 echo ""
 echo -e "$RED $PLAY $NC $BLUE is an invalid selection! $NC"
 echo ""
 sleep 3
 NewS
 ;;
-
 esac
 }
-
-
 function OldieS (){
-
 Name01="A Better Oldies Station"
 Name02="ANTENNE BAYERN Oldies but Goldies"
 Name03="E.P. Express Radio"
@@ -4953,7 +4450,6 @@ Name13="Oldie Party"
 Name14="Oldiesradio RGR"
 Name15="Pure Gold 95FM"
 Name16="Vinylgodis"
-
 link01="http://streaming.radionomy.com/a-better-oldies-station"
 link02="http://mp3channels.webradio.antenne.de:80/oldies-but-goldies"
 link03="http://37.187.79.56:9246"
@@ -4970,9 +4466,7 @@ link13="http://212.48.110.146:8410"
 link14="http://streams.lazernet.be:2620"
 link15="http://198.178.123.20:8374"
 link16="http://89.236.16.230:8000"
-
-clear
-
+printf "\033c"
 echo -e "Stations Playing $BLUE Oldies Music $NC :"
 echo ""
 echo -e "$BLUE 01 $NC $Name01"
@@ -4994,11 +4488,10 @@ echo -e "$BLUE 16 $NC $Name16"
 echo -e "$RED 17 $BLUE Return to Main Menu $NC"
 echo ""
 echo -e "Select a $BLUE station $NC between 1 to 16 and hit $BLUE [Enter] $NC to $BLUE PLAY $NC :"
-read PLAY
+read -er PLAY
 case "$PLAY" in
-
 01 | 1)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Oldies $NC -> $BLUE $Name01 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -5009,9 +4502,8 @@ echo ""
 $PLAYER "$link01" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 OldieS
 ;;
-
 02 | 2)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Oldies $NC -> $BLUE $Name02 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -5022,9 +4514,8 @@ echo ""
 $PLAYER "$link02" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 OldieS
 ;;
-
 03 | 3)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Oldies $NC -> $BLUE $Name03 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -5035,9 +4526,8 @@ echo ""
 $PLAYER "$link03" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 OldieS
 ;;
-
 04 | 4)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Oldies $NC -> $BLUE $Name04 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -5048,9 +4538,8 @@ echo ""
 $PLAYER "$link04" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 OldieS
 ;;
-
 05 | 5)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Oldies $NC -> $BLUE $Name05 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -5061,9 +4550,8 @@ echo ""
 $PLAYER "$link05" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 OldieS
 ;;
-
 06 | 6)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Oldies $NC -> $BLUE $Name06 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -5074,9 +4562,8 @@ echo ""
 $PLAYER "$link06" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 OldieS
 ;;
-
 07 | 7)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Oldies $NC -> $BLUE $Name07 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -5087,9 +4574,8 @@ echo ""
 $PLAYER "$link07" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 OldieS
 ;;
-
 08 | 8)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Oldies $NC -> $BLUE $Name08 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -5100,9 +4586,8 @@ echo ""
 $PLAYER "$link08" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 OldieS
 ;;
-
 09 | 9)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Oldies $NC -> $BLUE $Name09 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -5113,9 +4598,8 @@ echo ""
 $PLAYER "$link09" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 OldieS
 ;;
-
 10)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Oldies $NC -> $BLUE $Name10 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -5126,9 +4610,8 @@ echo ""
 $PLAYER "$link10" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 OldieS
 ;;
-
 11)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Oldies $NC -> $BLUE $Name11 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -5139,9 +4622,8 @@ echo ""
 $PLAYER "$link11" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 OldieS
 ;;
-
 12)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Oldies $NC -> $BLUE $Name12 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -5152,9 +4634,8 @@ echo ""
 $PLAYER "$link12" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 OldieS
 ;;
-
 13)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Oldies $NC -> $BLUE $Name13 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -5165,9 +4646,8 @@ echo ""
 $PLAYER "$link13" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 OldieS
 ;;
-
 14)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Oldies $NC -> $BLUE $Name14 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -5178,9 +4658,8 @@ echo ""
 $PLAYER "$link14" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 OldieS
 ;;
-
 15)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Oldies $NC -> $BLUE $Name15 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -5191,9 +4670,8 @@ echo ""
 $PLAYER "$link15" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 OldieS
 ;;
-
 16)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Oldies $NC -> $BLUE $Name16 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -5204,27 +4682,21 @@ echo ""
 $PLAYER "$link16" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 OldieS
 ;;
-
 17)
-clear
+printf "\033c"
 Muzic
 ;;
-
 *)
-clear
+printf "\033c"
 echo ""
 echo -e "$RED $PLAY $NC $BLUE is an invalid selection! $NC"
 echo ""
 sleep 3
 OldieS
 ;;
-
 esac
 }
-
-
 function ReggaE (){
-
 Name01="A Better Smokin Reggae Roots Station"
 Name02="A Reggae Dream"
 Name03="A2R Reggae"
@@ -5241,7 +4713,6 @@ Name13="La Grosse Radio Reggae"
 Name14="Reggae Connection"
 Name15="Reggae Mix"
 Name16="Scratch Radio"
-
 link01="http://streaming.radionomy.com/A-Better-Smokin-Reggae-Roots-Station"
 link02="http://streaming.radionomy.com/AREGGAEDREAM-Rasta24H"
 link03="http://streaming.radionomy.com/A2R-Reggae"
@@ -5258,9 +4729,7 @@ link13="http://176.31.246.159:8300"
 link14="http://listen.radionomy.com/Reggae-Connection"
 link15="http://195.154.80.65:8142"
 link16="http://173.192.198.244:8042"
-
-clear
-
+printf "\033c"
 echo -e "Stations Playing $BLUE Reggae Music $NC :"
 echo ""
 echo -e "$BLUE 01 $NC $Name01"
@@ -5282,11 +4751,10 @@ echo -e "$BLUE 16 $NC $Name16"
 echo -e "$RED 17 $BLUE Return to Main Menu $NC"
 echo ""
 echo -e "Select a $BLUE station $NC between 1 to 16 and hit $BLUE [Enter] $NC to $BLUE PLAY $NC :"
-read PLAY
+read -er PLAY
 case "$PLAY" in
-
 01 | 1)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Reggae $NC -> $BLUE $Name01 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -5297,9 +4765,8 @@ echo ""
 $PLAYER "$link01" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 ReggaE
 ;;
-
 02 | 2)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Reggae $NC -> $BLUE $Name02 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -5310,9 +4777,8 @@ echo ""
 $PLAYER "$link02" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 ReggaE
 ;;
-
 03 | 3)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Reggae $NC -> $BLUE $Name03 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -5323,9 +4789,8 @@ echo ""
 $PLAYER "$link03" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 ReggaE
 ;;
-
 04 | 4)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Reggae $NC -> $BLUE $Name04 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -5336,9 +4801,8 @@ echo ""
 $PLAYER "$link04" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 ReggaE
 ;;
-
 05 | 5)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Reggae $NC -> $BLUE $Name05 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -5349,9 +4813,8 @@ echo ""
 $PLAYER "$link05" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 ReggaE
 ;;
-
 06 | 6)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Reggae $NC -> $BLUE $Name06 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -5362,9 +4825,8 @@ echo ""
 $PLAYER "$link06" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 ReggaE
 ;;
-
 07 | 7)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Reggae $NC -> $BLUE $Name07 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -5375,9 +4837,8 @@ echo ""
 $PLAYER "$link07" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 ReggaE
 ;;
-
 08 | 8)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Reggae $NC -> $BLUE $Name08 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -5388,9 +4849,8 @@ echo ""
 $PLAYER "$link08" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 ReggaE
 ;;
-
 09 | 9)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Reggae $NC -> $BLUE $Name09 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -5401,9 +4861,8 @@ echo ""
 $PLAYER "$link09" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 ReggaE
 ;;
-
 10)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Reggae $NC -> $BLUE $Name10 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -5414,9 +4873,8 @@ echo ""
 $PLAYER "$link10" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 ReggaE
 ;;
-
 11)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Reggae $NC -> $BLUE $Name11 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -5427,9 +4885,8 @@ echo ""
 $PLAYER "$link11" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 ReggaE
 ;;
-
 12)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Reggae $NC -> $BLUE $Name12 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -5440,9 +4897,8 @@ echo ""
 $PLAYER "$link12" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 ReggaE
 ;;
-
 13)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Reggae $NC -> $BLUE $Name13 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -5453,9 +4909,8 @@ echo ""
 $PLAYER "$link13" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 ReggaE
 ;;
-
 14)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Reggae $NC -> $BLUE $Name14 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -5466,9 +4921,8 @@ echo ""
 $PLAYER "$link14" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 ReggaE
 ;;
-
 15)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Reggae $NC -> $BLUE $Name15 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -5479,9 +4933,8 @@ echo ""
 $PLAYER "$link15" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 ReggaE
 ;;
-
 16)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Reggae $NC -> $BLUE $Name16 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -5492,27 +4945,21 @@ echo ""
 $PLAYER "$link16" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 ReggaE
 ;;
-
 17)
-clear
+printf "\033c"
 Muzic
 ;;
-
 *)
-clear
+printf "\033c"
 echo ""
 echo -e "$RED $PLAY $NC $BLUE is an invalid selection! $NC"
 echo ""
 sleep 3
 ReggaE
 ;;
-
 esac
 }
-
-
 function RocK (){
-
 Name01="1 Classic Rock"
 Name02="100 Energy"
 Name03="104 Classic Rock"
@@ -5529,7 +4976,6 @@ Name13="Peace Radio"
 Name14="pinkfloydteguz"
 Name15="ROCK ANTENNE"
 Name16="VW Classic Rock"
-
 link01="http://streaming.radionomy.com/-1ClassicRock"
 link02="http://streaming.radionomy.com/100-Energy-RIWCLASSICROCKCHANNEL"
 link03="http://173.193.14.166:80"
@@ -5546,9 +4992,7 @@ link13="http://listen.radionomy.com/Peace-Radio"
 link14="http://listen.radionomy.com/pinkfloydteguz"
 link15="http://mp3channels.webradio.antenne.de:80/rockantenne"
 link16="http://streaming.radionomy.com/VWClassicRock"
-
-clear
-
+printf "\033c"
 echo -e "Stations Playing $BLUE Rock Music $NC :"
 echo ""
 echo -e "$BLUE 01 $NC $Name01"
@@ -5570,11 +5014,10 @@ echo -e "$BLUE 16 $NC $Name16"
 echo -e "$RED 17 $BLUE Return to Main Menu $NC"
 echo ""
 echo -e "Select a $BLUE station $NC between 1 to 16 and hit $BLUE [Enter] $NC to $BLUE PLAY $NC :"
-read PLAY
+read -er PLAY
 case "$PLAY" in
-
 01 | 1)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Rock $NC -> $BLUE $Name01 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -5585,9 +5028,8 @@ echo ""
 $PLAYER "$link01" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 RocK
 ;;
-
 02 | 2)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Rock $NC -> $BLUE $Name02 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -5598,9 +5040,8 @@ echo ""
 $PLAYER "$link02" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 RocK
 ;;
-
 03 | 3)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Rock $NC -> $BLUE $Name03 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -5611,9 +5052,8 @@ echo ""
 $PLAYER "$link03" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 RocK
 ;;
-
 04 | 4)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Rock $NC -> $BLUE $Name04 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -5624,9 +5064,8 @@ echo ""
 $PLAYER "$link04" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 RocK
 ;;
-
 05 | 5)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Rock $NC -> $BLUE $Name05 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -5637,9 +5076,8 @@ echo ""
 $PLAYER "$link05" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 RocK
 ;;
-
 06 | 6)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Rock $NC -> $BLUE $Name06 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -5650,9 +5088,8 @@ echo ""
 $PLAYER "$link06" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 RocK
 ;;
-
 07 | 7)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Rock $NC -> $BLUE $Name07 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -5663,9 +5100,8 @@ echo ""
 $PLAYER "$link07" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 RocK
 ;;
-
 08 | 8)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Rock $NC -> $BLUE $Name08 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -5676,9 +5112,8 @@ echo ""
 $PLAYER "$link08" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 RocK
 ;;
-
 09 | 9)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Rock $NC -> $BLUE $Name09 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -5689,9 +5124,8 @@ echo ""
 $PLAYER "$link09" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 RocK
 ;;
-
 10)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Rock $NC -> $BLUE $Name10 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -5702,9 +5136,8 @@ echo ""
 $PLAYER "$link10" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 RocK
 ;;
-
 11)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Rock $NC -> $BLUE $Name11 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -5715,9 +5148,8 @@ echo ""
 $PLAYER "$link11" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 RocK
 ;;
-
 12)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Rock $NC -> $BLUE $Name12 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -5728,9 +5160,8 @@ echo ""
 $PLAYER "$link12" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 RocK
 ;;
-
 13)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Rock $NC -> $BLUE $Name13 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -5741,9 +5172,8 @@ echo ""
 $PLAYER "$link13" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 RocK
 ;;
-
 14)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Rock $NC -> $BLUE $Name14 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -5754,9 +5184,8 @@ echo ""
 $PLAYER "$link14" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 RocK
 ;;
-
 15)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Rock $NC -> $BLUE $Name15 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -5767,9 +5196,8 @@ echo ""
 $PLAYER "$link15" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 RocK
 ;;
-
 16)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Rock $NC -> $BLUE $Name16 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -5780,27 +5208,21 @@ echo ""
 $PLAYER "$link16" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 RocK
 ;;
-
 17)
-clear
+printf "\033c"
 Muzic
 ;;
-
 *)
-clear
+printf "\033c"
 echo ""
 echo -e "$RED $PLAY $NC $BLUE is an invalid selection! $NC"
 echo ""
 sleep 3
 RocK
 ;;
-
 esac
 }
-
-
 function SomA (){
-
 Name01="7 Inch Soul"
 Name02="BAGeL Radio"
 Name03="Beat Blender"
@@ -5832,7 +5254,6 @@ Name28="Suburbs of Goa"
 Name29="The Trip"
 Name30="ThistleRadio"
 Name31="Underground 80s"
-
 link01="http://ice.somafm.com/7soul"
 link02="http://ice.somafm.com/bagel"
 link03="http://ice.somafm.com/beatblender"
@@ -5864,9 +5285,7 @@ link28="http://ice.somafm.com/suburbsofgoa"
 link29="http://ice.somafm.com/thetrip"
 link30="http://ice.somafm.com/thistle"
 link31="http://ice.somafm.com/u80s"
-
-clear
-
+printf "\033c"
 echo -e "$BLUE SomaFM $NC Stations :"
 echo ""
 echo -e "$BLUE 01 $NC $Name01           $BLUE 02 $NC $Name02"
@@ -5887,11 +5306,10 @@ echo -e "$BLUE 29 $NC $Name29              $BLUE 30 $NC $Name30"
 echo -e "$BLUE 31 $NC $Name31       $RED 32 $BLUE Return to Main Menu $NC"
 echo ""
 echo -e "Select a $BLUE station $NC between 1 to 31 and hit $BLUE [Enter] $NC to $BLUE PLAY $NC :"
-read PLAY
+read -er PLAY
 case "$PLAY" in
-
 01 | 1)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE SomaFM $NC -> $BLUE $Name01 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -5902,9 +5320,8 @@ echo ""
 $PLAYER "$link01" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 SomA
 ;;
-
 02 | 2)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE SomaFM $NC -> $BLUE $Name02 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -5915,9 +5332,8 @@ echo ""
 $PLAYER "$link02" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 SomA
 ;;
-
 03 | 3)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE SomaFM $NC -> $BLUE $Name03 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -5928,9 +5344,8 @@ echo ""
 $PLAYER "$link03" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 SomA
 ;;
-
 04 | 4)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE SomaFM $NC -> $BLUE $Name04 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -5941,9 +5356,8 @@ echo ""
 $PLAYER "$link04" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 SomA
 ;;
-
 05 | 5)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE SomaFM $NC -> $BLUE $Name05 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -5954,9 +5368,8 @@ echo ""
 $PLAYER "$link05" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 SomA
 ;;
-
 06 | 6)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE SomaFM $NC -> $BLUE $Name06 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -5967,9 +5380,8 @@ echo ""
 $PLAYER "$link06" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 SomA
 ;;
-
 07 | 7)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE SomaFM $NC -> $BLUE $Name07 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -5980,9 +5392,8 @@ echo ""
 $PLAYER "$link07" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 SomA
 ;;
-
 08 | 8)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE SomaFM $NC -> $BLUE $Name08 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -5993,9 +5404,8 @@ echo ""
 $PLAYER "$link08" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 SomA
 ;;
-
 09 | 9)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE SomaFM $NC -> $BLUE $Name09 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -6006,9 +5416,8 @@ echo ""
 $PLAYER "$link09" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 SomA
 ;;
-
 10)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE SomaFM $NC -> $BLUE $Name10 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -6019,9 +5428,8 @@ echo ""
 $PLAYER "$link10" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 SomA
 ;;
-
 11)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE SomaFM $NC -> $BLUE $Name11 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -6032,9 +5440,8 @@ echo ""
 $PLAYER "$link11" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 SomA
 ;;
-
 12)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE SomaFM $NC -> $BLUE $Name12 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -6045,9 +5452,8 @@ echo ""
 $PLAYER "$link12" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 SomA
 ;;
-
 13)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE SomaFM $NC -> $BLUE $Name13 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -6058,9 +5464,8 @@ echo ""
 $PLAYER "$link13" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 SomA
 ;;
-
 14)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE SomaFM $NC -> $BLUE $Name14 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -6071,9 +5476,8 @@ echo ""
 $PLAYER "$link14" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 SomA
 ;;
-
 15)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE SomaFM $NC -> $BLUE $Name15 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -6084,9 +5488,8 @@ echo ""
 $PLAYER "$link15" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 SomA
 ;;
-
 16)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE SomaFM $NC -> $BLUE $Name16 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -6097,9 +5500,8 @@ echo ""
 $PLAYER "$link16" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 SomA
 ;;
-
 17)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE SomaFM $NC -> $BLUE $Name17 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -6110,9 +5512,8 @@ echo ""
 $PLAYER "$link17" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 SomA
 ;;
-
 18)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE SomaFM $NC -> $BLUE $Name18 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -6123,9 +5524,8 @@ echo ""
 $PLAYER "$link18" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 SomA
 ;;
-
 19)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE SomaFM $NC -> $BLUE $Name19 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -6136,9 +5536,8 @@ echo ""
 $PLAYER "$link19" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 SomA
 ;;
-
 20)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE SomaFM $NC -> $BLUE $Name20 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -6149,9 +5548,8 @@ echo ""
 $PLAYER "$link20" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 SomA
 ;;
-
 21)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE SomaFM $NC -> $BLUE $Name21 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -6162,9 +5560,8 @@ echo ""
 $PLAYER "$link21" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 SomA
 ;;
-
 22)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE SomaFM $NC -> $BLUE $Name22 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -6175,9 +5572,8 @@ echo ""
 $PLAYER "$link22" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 SomA
 ;;
-
 23)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE SomaFM $NC -> $BLUE $Name23 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -6188,9 +5584,8 @@ echo ""
 $PLAYER "$link23" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 SomA
 ;;
-
 24)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE SomaFM $NC -> $BLUE $Name24 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -6201,9 +5596,8 @@ echo ""
 $PLAYER "$link24" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 SomA
 ;;
-
 25)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE SomaFM $NC -> $BLUE $Name25 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -6214,9 +5608,8 @@ echo ""
 $PLAYER "$link25" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 SomA
 ;;
-
 26)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE SomaFM $NC -> $BLUE $Name26 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -6227,9 +5620,8 @@ echo ""
 $PLAYER "$link26" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 SomA
 ;;
-
 27)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE SomaFM $NC -> $BLUE $Name27 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -6240,9 +5632,8 @@ echo ""
 $PLAYER "$link27" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 SomA
 ;;
-
 28)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE SomaFM $NC -> $BLUE $Name28 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -6253,9 +5644,8 @@ echo ""
 $PLAYER "$link28" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 SomA
 ;;
-
 29)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE SomaFM $NC -> $BLUE $Name29 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -6266,9 +5656,8 @@ echo ""
 $PLAYER "$link29" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 SomA
 ;;
-
 30)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE SomaFM $NC -> $BLUE $Name30 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -6279,9 +5668,8 @@ echo ""
 $PLAYER "$link30" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 SomA
 ;;
-
 31)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE SomaFM $NC -> $BLUE $Name31 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -6292,27 +5680,21 @@ echo ""
 $PLAYER "$link31" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 SomA
 ;;
-
 32)
-clear
+printf "\033c"
 Muzic
 ;;
-
 *)
-clear
+printf "\033c"
 echo ""
 echo -e "$RED $PLAY $NC $BLUE is an invalid selection! $NC"
 echo ""
 sleep 3
 SomA
 ;;
-
 esac
 }
-
-
 function UrbaN (){
-
 Name01="1 Soul"
 Name02="2000s R'n'B"
 Name03="A Better Old School Classic Rap Station"
@@ -6329,7 +5711,6 @@ Name13="BlackBeats FM"
 Name14="HOT 108 Jamz"
 Name15="MyneedRadio HipHop"
 Name16="Street Style Radio"
-
 link01="http://streaming.radionomy.com/-1Soul"
 link02="http://streaming.radionomy.com/2000s-RnB"
 link03="http://streaming.radionomy.com/a-better-old-school-classic-rap-station"
@@ -6346,9 +5727,7 @@ link13="http://46.165.233.197:80"
 link14="http://108.61.30.179:4020"
 link15="http://listen.radionomy.com:80/MYNEEDRADIOHIPHOP"
 link16="http://fire.wavestreamer.com:5709"
-
-clear
-
+printf "\033c"
 echo -e "Stations Playing $BLUE Urban Music $NC :"
 echo ""
 echo -e "$BLUE 01 $NC $Name01"
@@ -6370,11 +5749,10 @@ echo -e "$BLUE 16 $NC $Name16"
 echo -e "$RED 17 $BLUE Return to Main Menu $NC"
 echo ""
 echo -e "Select a $BLUE station $NC between 1 to 16 and hit $BLUE [Enter] $NC to $BLUE PLAY $NC :"
-read PLAY
+read -er PLAY
 case "$PLAY" in
-
 01 | 1)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Urban $NC -> $BLUE $Name01 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -6385,9 +5763,8 @@ echo ""
 $PLAYER "$link01" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 UrbaN
 ;;
-
 02 | 2)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Urban $NC -> $BLUE $Name01 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -6398,9 +5775,8 @@ echo ""
 $PLAYER "$link02" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 UrbaN
 ;;
-
 03 | 3)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Urban $NC -> $BLUE $Name03 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -6411,9 +5787,8 @@ echo ""
 $PLAYER "$link03" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 UrbaN
 ;;
-
 04 | 4)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Urban $NC -> $BLUE $Name04 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -6424,9 +5799,8 @@ echo ""
 $PLAYER "$link04" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 UrbaN
 ;;
-
 05 | 5)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Urban $NC -> $BLUE $Name05 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -6437,9 +5811,8 @@ echo ""
 $PLAYER "$link05" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 UrbaN
 ;;
-
 06 | 6)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Urban $NC -> $BLUE $Name06 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -6450,9 +5823,8 @@ echo ""
 $PLAYER "$link06" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 UrbaN
 ;;
-
 07 | 7)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Urban $NC -> $BLUE $Name07 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -6463,9 +5835,8 @@ echo ""
 $PLAYER "$link07" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 UrbaN
 ;;
-
 08 | 8)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Urban $NC -> $BLUE $Name08 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -6476,9 +5847,8 @@ echo ""
 $PLAYER "$link08" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 UrbaN
 ;;
-
 09 | 9)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Urban $NC -> $BLUE $Name09 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -6489,9 +5859,8 @@ echo ""
 $PLAYER "$link09" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 UrbaN
 ;;
-
 10)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Urban $NC -> $BLUE $Name10 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -6502,9 +5871,8 @@ echo ""
 $PLAYER "$link10" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 UrbaN
 ;;
-
 11)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Urban $NC -> $BLUE $Name11 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -6515,9 +5883,8 @@ echo ""
 $PLAYER "$link11" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 UrbaN
 ;;
-
 12)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Urban $NC -> $BLUE $Name12 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -6528,9 +5895,8 @@ echo ""
 $PLAYER "$link12" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 UrbaN
 ;;
-
 13)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Urban $NC -> $BLUE $Name13 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -6541,9 +5907,8 @@ echo ""
 $PLAYER "$link13" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 UrbaN
 ;;
-
 14)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Urban $NC -> $BLUE $Name14 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -6554,9 +5919,8 @@ echo ""
 $PLAYER "$link14" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 UrbaN
 ;;
-
 15)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Urban $NC -> $BLUE $Name15 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -6567,9 +5931,8 @@ echo ""
 $PLAYER "$link15" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 UrbaN
 ;;
-
 16)
-clear
+printf "\033c"
 echo -e "$BLUE PMRP $NC -> $BLUE Urban $NC -> $BLUE $Name16 $NC:"
 echo ""
 echo -e "Press $BLUE [Space] $NC to pause : Press $BLUE [Q] $NC to stop"
@@ -6580,28 +5943,21 @@ echo ""
 $PLAYER "$link16" 2>&1 /dev/null | grep --line-buffered "StreamTitle" | sed -e 's/;.*//' -e 's/.*=//' -e "s/'//g"
 UrbaN
 ;;
-
 17)
-clear
+printf "\033c"
 Muzic
 ;;
-
 *)
-clear
+printf "\033c"
 echo ""
 echo -e "$RED $PLAY $NC $BLUE is an invalid selection! $NC"
 echo ""
 sleep 3
 UrbaN
 ;;
-
 esac
 }
-
-
 while :
 do
-
 Muzic
-
 done
