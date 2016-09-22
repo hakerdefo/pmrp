@@ -14,18 +14,18 @@ pmrp (Poor Man's Radio Player) is an Internet radio player script written in bas
   
 ### Dependencies :
 
-  - mpg123 - [mpg123] is a real time MPEG 1.0/2.0/2.5 audio player/decoder for layers 1,2 and 3 (most commonly MPEG 1.0 layer 3 aka MP3). It is free software licensed under LGPL 2.1. It is available in the repositories of most Linux distributions so you can easily install it via your package manager.
+  - [mpg123] - mpg123 is a real time MPEG 1.0/2.0/2.5 audio player/decoder for layers 1,2 and 3 (most commonly MPEG 1.0 layer 3 aka MP3). It is free software licensed under LGPL 2.1. It is available in the repositories of most Linux distributions so you can easily install it via your package manager.
   
   
 ### Installation :
 
-Download [pmrp-master] zip, extract it's contents and copy the file 'pmrp' to '/usr/local/bin/' directory,
+Download [pmrp-master] zip, extract its contents and copy the file 'pmrp' to '/usr/local/bin' directory,
 ```sh
 $ sudo cp pmrp /usr/local/bin/
 ```
 Next make it executable,
 ```sh
-$ sudo chmod a+x /usr/local/bin/pmrp
+$ sudo chmod 755 /usr/local/bin/pmrp
 ```
 
 
