@@ -34,6 +34,11 @@ $ sudo chmod 755 /usr/local/bin/pmrp
 Open terminal, run pmrp, select a station according to your mood & don't forget to turn up the volume.
 
 
+### Support :
+If you like **pmrp**, please consider supporting it, even the smallest contribution goes a long way. It is easy & quick via Coindrop,  
+<a href="https://coindrop.to/hakerdefo" target="_blank"><img src="https://coindrop.to/embed-button.png" style="border-radius: 10px;" alt="Coindrop.to me" style="height: 57px !important;width: 229px !important;" ></a>
+
+
 ### License :
 
 [![Public Domain Mark](http://i.creativecommons.org/p/mark/1.0/88x31.png)](http://creativecommons.org/publicdomain/mark/1.0/)  
