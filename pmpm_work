@@ -1,4 +1,0 @@
-openssl enc -camellia-256-cbc -k "$MASTER_PASSWORD" -md blake2b512 -S "$hex derived from birth place using xxd -pu <<< $BIRTHPLACE" -iter 800000 -pbkdf2 <<< "$WEBSITE" | openssl dgst -blake2b512 | sed 's/^.* //' | tr -d '\n'
-openssl enc -camellia-256-cbc -k "$MASTER_PASSWORD" -md blake2b512 -S "$hex derived from birth place using xxd -pu <<< $BIRTHPLACE" -iter 800000 -pbkdf2 <<< "$username" | openssl dgst -blake2b512 | sed 's/^.* //' | tr -d '\n'
-openssl enc -camellia-256-cbc -k "$MASTER_PASSWORD" -md blake2b512 -S "$hex derived from birth place using xxd -pu <<< $BIRTHPLACE" -iter 800000 -pbkdf2 <<< "$iternumber" | openssl dgst -blake2b512 | sed 's/^.* //' | tr -d '\n'
-openssl enc -camellia-256-cbc -k "$MASTER_PASSWORD" -md blake2b512 -S "$hex derived from birth place using xxd -pu <<< $BIRTHPLACE" -iter 800000 -pbkdf2 <<< "$WEBSITE+$username+$iternumber" | openssl dgst -blake2b512 | sed 's/^.* //' | tr -d '\n' | pmba91 | tr -d '\n'
