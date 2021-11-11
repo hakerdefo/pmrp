@@ -35,8 +35,13 @@ Open terminal, run pmrp, select a station according to your mood & don't forget 
 
 
 ### Support :
-If you like **pmrp**, please consider supporting it, even the smallest contribution goes a long way. It is easy & quick via Coindrop,  
-<a href="https://coindrop.to/hakerdefo" target="_blank"><img src="https://coindrop.to/embed-button.png" style="border-radius: 10px;" alt="Coindrop.to me" style="height: 57px !important;width: 229px !important;" ></a>
+
+If you like **pmrp**, please consider supporting it, even the smallest contribution goes a long way. It is quick & easy via PayPal, Buy Me a Coffee or Liberapay:  
+
+[![Support via PayPal](https://cdn.jsdelivr.net/gh/twolfson/paypal-github-button@1.0.0/dist/button.svg)](https://paypal.me/hakerdefo)  
+[!["Buy Me A Coffee"](https://user-images.githubusercontent.com/1376749/120938564-50c59780-c6e1-11eb-814f-22a0399623c5.png)](https://www.buymeacoffee.com/hakerdefo)  
+[![Support via Liberapay](https://liberapay.com/assets/widgets/donate.svg)](https://liberapay.com/hakerdefo/donate)  
+
 
 
 ### License :
