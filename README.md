@@ -1,3 +1,12 @@
+> ### 📻 A Note to Our Long-Time Listeners: The Next Evolution of PMRP
+> **For 11 years**, this lightweight `mpg123` script has provided terminal radio to thousands of users, proudly serving as a default package in antiX Linux. Thank you for listening with me. 
+> 
+> Because stability matters, **this repository will remain exactly as it is**—a testament to minimalism and hardcoded reliability. 
+>
+> However, if you are ready for a modern upgrade, I invite you to discover its newly released successor: **[PMRP-NG](https://github.com/hakerdefo/pmrp-ng)**. Completely rewritten for the modern terminal, the new version uses `mpv`, `fzf`, and dynamically searches a global API of over 40,000 live radio stations. 
+>
+> [Step into the new era of PMRP here.](https://github.com/hakerdefo/pmrp-ng)
+
 # pmrp
 pmrp (Poor Man's Radio Player) is an Internet radio player script written in bash.
 
